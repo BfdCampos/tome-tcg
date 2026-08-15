@@ -17,6 +17,7 @@ import {
 	GameCard,
 	GameIteration,
 	GameState,
+	GameWinner,
 	SIDES,
 	Side,
 	SpellColor,
@@ -50,6 +51,7 @@ export type SanitisedGameState = {
 	sentAt: number;
 	type: 'state';
 	side: Side;
+	winner: GameWinner;
 	board: {
 		phase: Turn['phase'];
 		field: PubSubCard[];
@@ -123,6 +125,7 @@ const sanitiseIteration = (playerSide: Side, originalIteration: GameIteration): 
 				sentAt: Date.now(),
 				type: 'state',
 				side: playerSide,
+				winner: originalIteration.winner,
 				board: {
 					discardPile: [],
 					field: originalIteration.board.field.map(showFieldCard),
@@ -231,6 +234,10 @@ const createGameRoom = (gameId: number) => {
 					return room.connections[side]?.send(iteration);
 				});
 			}
+
+			// the game loop only ends once a player has won
+			room.state = 'LOBBY';
+			await db.update(games).set({ status: 'FINISHED' }).where(eq(games.id, gameId));
 		};
 		handleGame();
 	};
