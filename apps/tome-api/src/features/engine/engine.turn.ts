@@ -13,6 +13,7 @@ import {
 	SpellAttack,
 	SpellCard,
 	SpellColor,
+	getGameWinner,
 	resolveFieldClash,
 	resolveSpellClash,
 	runClashEffects,
@@ -448,6 +449,24 @@ export async function* handleTurn(params: HandleTurnParmas): AsyncGenerator<Game
 
 	// end of turn
 	game.finishedTurns.push(game.turn);
+
+	// a player reaching 0 HP ends the game
+	const winner = getGameWinner(game);
+	if (winner) {
+		game.winner = winner;
+		if (winner === 'draw') {
+			yield log({ type: 'log', text: 'Both wizards fall — the game is a draw!' });
+		} else {
+			yield log({
+				type: 'log',
+				text: '{{player}} wins the game!',
+				dynamic: { player: { type: 'player', side: winner } },
+			});
+		}
+		yield game;
+		return;
+	}
+
 	game.turn = initialiseTurn();
 	yield* handleTurn(params);
 }

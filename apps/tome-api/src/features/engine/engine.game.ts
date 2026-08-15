@@ -67,6 +67,9 @@ export type GameAction = {
 	};
 }[keyof PlayerActionMap];
 
+/** The outcome of a finished game. `null` while the game is still ongoing. */
+export type GameWinner = Side | 'draw' | null;
+
 export type GameState = {
 	type: 'state';
 	finishedTurns: Turn[];
@@ -75,6 +78,8 @@ export type GameState = {
 	actions: {
 		[K in Side]?: GameAction;
 	};
+	/** Set once a player reaches 0 HP. `null` while the game is ongoing. */
+	winner: GameWinner;
 };
 
 export type GameIteration = GameState | VfxIteration | LogIteration;
@@ -235,7 +240,22 @@ export const initialiseGame = (board: Board): GameState => ({
 	finishedTurns: [],
 	turn: initialiseTurn(),
 	actions: {},
+	winner: null,
 });
+
+/**
+ * Determines the winner from the players’ current HP. A player at 0 HP (or below)
+ * loses, and their opponent wins. If both players are down, the game is a draw.
+ * Returns `null` while both players are still alive.
+ */
+export const getGameWinner = (game: GameState): GameWinner => {
+	const sideADown = game.board.players.sideA.hp <= 0;
+	const sideBDown = game.board.players.sideB.hp <= 0;
+	if (sideADown && sideBDown) return 'draw';
+	if (sideADown) return 'sideB';
+	if (sideBDown) return 'sideA';
+	return null;
+};
 
 export const getCardColors = (card: GameCard): SpellColor[] => {
 	switch (card.type) {
