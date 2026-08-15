@@ -93,10 +93,14 @@ export type CombatStackItem =
 			target: Side;
 	  };
 
+/**
+ * Maps a colour to the colour that beats it.
+ * The wheel is: red beats green, green beats blue, blue beats red.
+ */
 const winnerColorMap: Record<SpellColor, SpellColor> = {
-	blue: 'red',
-	green: 'blue',
-	red: 'green',
+	green: 'red',
+	blue: 'green',
+	red: 'blue',
 };
 
 export const resolveFieldClash = ({
@@ -135,8 +139,8 @@ export const resolveSpellClash = ({
 
 	// vs spell
 	if (spellA.slot === spellB.slot) return { won: null };
-	if (winnerColorMap[spellA.slot].includes(spellB.slot)) return { won: 'sideA' };
-	if (winnerColorMap[spellB.slot].includes(spellA.slot)) return { won: 'sideB' };
+	if (winnerColorMap[spellA.slot] === spellB.slot) return { won: 'sideB' };
+	if (winnerColorMap[spellB.slot] === spellA.slot) return { won: 'sideA' };
 
 	return { won: null };
 };
