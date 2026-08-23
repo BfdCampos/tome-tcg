@@ -42,6 +42,21 @@ The one-*prepare*-per-turn cap is load-bearing for the game's identity:
 So the fix is **not** "let players commit more spells per turn." That trades the
 game's spine for a short-term relief valve.
 
+> **How this was resolved (later in the session).** The clog is fixed by the
+> **tome + quest** redesign, not by the reaction cards this doc originally proposed:
+> - **The tome (doc 09)** means every learned spell stays available forever — cards
+>   are never "wasted" by being buried, so hoarding them has no point.
+> - **Quests (doc 10)** are the free, always-on thing you advance *outside* the
+>   prepare — so a turn is never empty even when you don't learn a spell.
+> - **`emptySlotAttack` is folded into base attack (doc 09):** an empty attack deals
+>   your **base** (starting 10), and quests are what raise it. Preparing now matters
+>   because a *learned spell adds a modifier on top of base* and unlocks the
+>   which-spell read.
+>
+> The original menu below (reactions, channel, discard-as-fuel) is kept as the
+> reasoning trail; **Option A's "reactive Wards" is dead** (simultaneous game, no
+> response window — see doc 04).
+
 ## The real fix: give the hand a *second outlet*, not a second commit
 
 The clog isn't "you commit too little" — it's "committed-to-a-stack is the *only*

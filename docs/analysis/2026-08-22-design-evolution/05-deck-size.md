@@ -1,64 +1,65 @@
-# Deck size: 30 vs 20
+# Deck size & format
 
-> "I also don't know if I like the 30 card deck. I think 20 might be more elegant
-> since the game is meant to be played quickly. But I'm not sure about this yet."
+> **Decided:** **13 spells + 7 quests = a 20-card loadout.** Spells are **singleton
+> (1 copy)**. **Deck-out is not a loss.** Two decks: a spell deck and a separate
+> quest line (doc 10).
+>
+> *(This doc previously argued "20-card, 2-copy, two-colour, deck-out = loss." All
+> four of those were superseded by the tome/quest redesign — corrected below. Kept
+> the reasoning trail rather than deleting it.)*
 
-## What 30 does today
+## Why 13 spells (singleton), not 20 (2-copy)
 
-`deck.schemas.ts` enforces **exactly 30 cards, max 2 copies**. With draw-1-per-turn
-and ~4–5 opening cards, you'll see maybe 15–20 cards in a normal-length game — so
-**you never come close to decking out**, and the back third of your deck is nearly
-irrelevant. Combined with the hand-clog (doc 02), a 30-card deck means a *lot* of
-cards you'll never play.
+Singleton changes the whole calculation: **deck size = number of unique tools = the
+size of the tome you could build.** So 13 singleton cards here carry the variety of a
+~26-card 2-copy deck elsewhere. Singleton pushes the number **down**, not up — 20
+distinct spells really would be too much to track on a phone and the game would end
+first anyway.
 
-## The case for 20
+- **13 is the middle of the sensible band.** 6 would be too few (no deckbuilding, you
+  see everything instantly); ~20 is the ceiling (a no-interaction game is ~20 turns
+  max, so you'd never learn them all). 13 keeps **6–7 spells per colour in a skewed
+  build**, so the "which spell do I cast" decision (doc 09) has real teeth.
+- **Singleton is forced by the tome** (doc 09): once a spell is learned, a duplicate
+  is a dead draw. Bonus: it boosts variety and the "collect them all" RPG feel.
+- **You learn ~1/turn**, so a 13-card deck is nearly fully learned by a ~13–15 turn
+  game — the satisfying "started weak, ended with a grimoire" arc.
 
-- **Consistency (P1/P5).** You see a larger fraction of your deck, so your archetype
-  actually shows up. Your "build" feels real every game instead of diluted by
-  filler. With max-2-copies, 20 needs ≥10 distinct cards — still plenty of room to
-  express a strategy.
-- **Speed (the brief's whole point).** Fewer cards, tighter games, better for the
-  mobile "one more match" loop (P2).
-- **Deck-out becomes a *real* clock.** At 20, the draw pile is a resource you can
-  feel. That opens a **second win condition** (mill / running them out) and a
-  natural game-length cap so matches can't stall — genuinely good for a fast mobile
-  game.
-- **Lower collection wall (P4).** A 20-card deck needs fewer owned cards to be
-  competitive → friendlier to free-to-play. (Trade-off noted below.)
+## Deck-out is a soft cap, not a loss
 
-## The case against / what to watch
+With a tome, emptying your spell deck just means **you've learned all your pages** —
+you keep attacking with your whole book, you just stop gaining new spells. So a small
+deck does **not** create a mill race, and mill is **not** a win condition. This is
+what makes 13 safe: no death-by-running-out, just a natural cap on growth. (Contrast
+the old note here, which made deck-out a loss and worried about mill — void under the
+tome.)
 
-- **Less variance = combos more reliable.** Smaller decks make degenerate two-card
-  combos easier to assemble every game. If the meta has a broken pair, 20 finds it
-  faster than 30. Balance must account for this.
-- **Slightly undercuts the "chase" (P4 tension).** Fewer required cards means a
-  competitive deck is *cheaper to complete*, which is great for players and mild
-  friction for monetisation. This is a **feature for fairness, a minor cost for
-  revenue** — resolve it on the cosmetic/chase axis (doc 07), not by inflating deck
-  size.
-- **Opening-hand swing.** A smaller deck makes a bad opening hurt more. Wants a
-  **mulligan** (already worth having regardless).
+## The quest line (the other 7)
 
-## This is really one knob-set, not one number
+Quests are a **separate deck of 7** (doc 10), not mixed into the spell deck — ramp
+must never be left to random draw. 13 + 7 = a clean **20-card** total loadout. Both
+13 and 7 are prime, and the round total reads nicely.
 
-Deck size can't be decided alone — it's bound to the doc-02 clog levers:
+## What replaces "two-colour" (the correction)
 
-- **draw rate** (draw every turn? only when you didn't prepare? only under a hand
-  cap?),
-- **`emptySlotAttack`** (does not-committing stay free?),
-- **whether deck-out is a loss** (it *is* in `getGameWinner`'s spirit but there's no
-  mill pressure at 30).
+An earlier version of this doc recommended MTG-style two-colour decks. **That was
+wrong for an RPS game** and is fully superseded by **doc 12 (Colour × Class)**:
 
-Pick these as a set. A coherent starting configuration to playtest:
+- **Colour is not deck identity.** Most decks run **all three colours** — you can't
+  refuse to be able to throw "rock."
+- **Class is deck identity.** You build around a **class** (Pyromancer, Warlock, …)
+  that spans all three colours, reflavoured to its theme.
 
-> **20-card deck, mulligan once, draw 1/turn, deck-out is a loss, and a lowered
-> `emptySlotAttack`** so that a 20-card game naturally runs ~12–18 turns and both
-> the hand and the draw pile feel like resources.
+So the "strat" is **a class + a colour spread + a role mix + a matched 7-quest
+line** — see doc 12 for the worked example.
 
-## Recommendation
+## Still open / to playtest
 
-- **Lean 20**, but treat it as provisional and **playtest it as a bundle** with draw
-  rate, empty-slot attack, and a mulligan.
-- **Add deck-out as a live clock** (it's mostly free given the engine already checks
-  a winner each turn) — it turns "fast game" from a hope into a rule.
-- Keep **max-2-copies**. Revisit only if 20 makes specific two-card combos oppressive.
+- **13 vs ~11.** Start at 13; if the tome feels bloated or games run short, test down
+  to 11. (Gut-check band: 11–15.)
+- **Mulligan.** Almost certainly yes (one free mulligan) — a small deck makes a bad
+  opener hurt.
+- **Draw rate & base tuning.** Draw 1/turn is the default; base attack 10 and the
+  ramp curve (doc 10) are the numbers to tune to hit a ~12–18 turn game.
+- **Copies rule in code.** `deck.schemas.ts` currently enforces `30 / max-2`; the new
+  format is `13 spells singleton + 7 quests`. Schema change tracked in doc 08.

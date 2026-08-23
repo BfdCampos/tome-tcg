@@ -1,89 +1,100 @@
-# Open questions, inconsistencies & next steps
+# Decisions, evaluation & open questions
 
-The running list of what still needs a decision from you, and the tensions this
-session surfaced. This is the doc we'll keep editing as we lock things down.
+The running ledger. Updated as the session converges. Supersedes the earlier
+"inconsistencies in the brief" framing — most of those are now resolved by the
+tome/quest redesign.
 
-## Inconsistencies / tensions spotted in the brief
+## Decided (locked this session)
 
-1. **"Remove fields" vs "weather is fine."** Resolved in doc 03 by splitting the
-   *mechanic* (clash-gated terrain — bad) from the *niche* (ambient weather — fine).
-   Fields go; an optional non-clashing "Omen/Weather" type can keep the niche.
-2. **Rarity: cosmetic or power?** (doc 07) — "full art / better animation" says
-   cosmetic; "legendary" implies power. **These are opposite games.** You must pick,
-   and picking *cosmetic* is the only choice consistent with "not pay-to-win." This
-   is the single most important economy decision.
-3. **The new card type could relieve the clog — or recreate it.** (docs 02, 04) — if
-   the new type is played via the **one prepare**, it competes with spells exactly
-   like fields did. It only *helps* if it's played **outside** the prepare
-   (reactively). Whatever your idea is, its **timing** is the load-bearing detail.
-4. **Two different needs are being bundled as "a new card type."** (doc 04) — (a)
-   *replace the ambient/field niche*, and (b) *make combat more than RPS*. These may
-   be **one** type or **two**. Keep them conceptually separate so we don't jam both
-   jobs into one confused card.
-5. **Smaller deck vs the collection chase.** (docs 05, 07) — 20-card decks are more
-   elegant and more fair, but need fewer cards, softening the chase. Resolve on the
-   **cosmetic** axis, not by re-inflating the deck.
-6. **Win-only coins vs "everyone progresses."** (doc 07) — pure win-pays-coins can
-   spiral for losing players; needs floors (daily/first-win/quests, loss-XP,
-   matchmaking) to stay P4-true.
+- **The Tome** — persistent, face-up per-colour spellbooks; choose colour **and**
+  learned spell on attack. (docs 04, 09)
+- **Base attack + modifiers** — base starts **10**, only quests raise it; spells are
+  `+X` modifiers; only the **clash winner** connects. (docs 04, 09)
+- **Quests** — the ramp, as **ordered-task Sagas** granting permanent base attack;
+  **separate 7-card quest deck**, one active, complete→draw-next, **abandon costs
+  your prepare**; loser-completable tasks + "OR" escape hatches. (doc 10)
+- **Colour × Class** — colour = RPS (all three in most decks); class = archetype,
+  spans colours, **printed type** with synergy. (doc 12)
+- **Counterplay tiers** — Seal (temporary denial) / `Lose:` Shield+Heal (mitigation)
+  / Burn (rare gated destruction). **No graveyard-as-resource.** (doc 11)
+- **Keywords** — MTG-style short keywords + tap-to-expand reminder text; working set
+  Learn / Hit / Lose / Seal / Forget, plus Shield & Heal resources. **Never**
+  Yu-Gi-Oh essays. (doc 11)
+- **Turn order** — Draw → Prepare → Choose attack → Reveal → Clash → Damage → Spell
+  effects → Quest → End. Effects resolve **after** damage; quests **last**. (doc 04)
+- **Format** — **13 singleton spells + 7 quests = 20**; **deck-out is not a loss**.
+  (doc 05)
+- **Fields removed**; weather/omen niche parked. (doc 03)
+- **Rarity = cosmetic only**; every playable card craftable. (doc 07)
+- **Singleton** spells. (docs 05, 09)
 
-## Decisions we need from you
+## Re-evaluation (2026-08-17 baseline → redesigned)
 
-**Combat / cards**
-- [ ] **Your card-type idea** — drop it into doc 04's slot (when played, persist vs
-      one-shot, does it touch the clash, the fantasy name). Everything downstream
-      keys off this.
-- [ ] Adopt **Wards/Glyphs** (reactions outside the prepare)? Standalone, or merged
-      with your idea?
-- [ ] Should reactions **cost a discard** to fire (turning clog into fuel)?
+| Dimension | Base | New | Why |
+|---|--:|--:|---|
+| **Originality** | 82 | **90** | Persistent spellbook + quest-leveling + colour×class RPS is a combination found nowhere. |
+| **Decision density** | 58 | **74** | Per turn: which spell to learn, quest/task planning, which colour **and** which learned spell to cast. |
+| **Mind-game / bluff** | 76 | **82** | Visible tome = read a **range**, not guess a card. Deeper, still a read. |
+| **Complexity / barrier** | 34 | **48** | More to learn (tome, quests, ramp, classes). Keywords keep it far below Yu-Gi-Oh. The number to **watch**. |
+| **Elegance** | 80 | **70** | Two resource systems + reordered timing. Keywords + the clean two-axis model limit the damage. |
+| **Mobile fit** | 85 | **72** | More on screen (tomes, quest tracks, class tags) and more taps (pick a spell from a fan). Still workable. |
+| **Snowball / comeback** | 45 | **~55** | Ramp is positive feedback, but **only-winner-connects** + **loser-completable quests** + on-`Lose` mitigation fight it. Tuning-dependent. |
 
-**Tempo / structure**
-- [ ] **Deck size 20** (recommended) or keep 30? Decide *with* draw rate,
-      `emptySlotAttack`, mulligan, and deck-out-as-loss (doc 05).
-- [ ] Lower **`emptySlotAttack`** so "commit nothing" stops being free? (worth
-      testing regardless)
-- [ ] Keep an **ambient/Omen** layer at all, or drop global effects entirely for
-      now? (doc 03)
+Net: **deeper and far more original, at a real cost in elegance and mobile
+cleanliness** — a trade we're taking deliberately.
 
-**Economy**
-- [ ] **Rarity = cosmetic, not power** — confirm. (doc 07, the linchpin)
-- [ ] **4 rarity tiers** at launch instead of 6? 
-- [ ] Confirm **every playable card is craftable** (no money-gated power).
-- [ ] Coin **floors** (daily/first-win/quests) + **loss-XP** — in or out?
+## Still open (need decisions or playtest)
 
-**Theme / naming** (doc 06)
-- [ ] Species name — **Tomelings**?
-- [ ] Peoples — **Emberkin / Thornkin / Tidekin** (`-kin`)? Thornkin vs Leafkin,
-      Tidekin vs Rimekin?
-- [ ] Does the in-world tome get its own name so "Tome" stays the app?
+**Naming / vocabulary**
+- [ ] Final **keyword names** (in-world) for Learn / Hit / Lose / Seal / Forget.
+- [ ] **Class list** — count, names, identities (ties to docs 06, 07, 12).
+- [ ] Species & peoples names (doc 06): **Tomelings**? **Emberkin/Thornkin/Tidekin**?
 
-## A suggested sequence (once decisions land)
+**Rules knobs**
+- [ ] **Seal duration** — 1 turn (leaning) vs "until you next win a clash".
+- [ ] **One quest task cash-in per turn** (leaning) vs cascading.
+- [ ] **Opening quest** — random from your 7 (leaning) vs chosen.
+- [ ] **Class synergy weight** — light vs medium (leaning light-to-medium).
+- [ ] **Shield** details — stacking, any cap, does it persist indefinitely.
 
-Design-first, cheapest-reversible-first:
+**Numbers (playtest-only)**
+- [ ] Base attack (10?), spell modifier band, ramp curve (+2/+3/+5?), starting HP
+      (test 80?), starting hand size, mulligan.
 
-1. **Lock the new card type** (doc 04) — it gates combat, UI, and the clog fix.
-2. **Playtest the tempo bundle** (doc 05) — 20 cards + draw/empty-slot/mulligan +
-   deck-out. These are mostly *number* changes to the existing engine; fast to try.
-3. **Remove fields**, re-home the salvageable 38 into Wards/Omens or retire (doc 03).
-4. **Prototype the interactive layer** in-engine — the hooks
-   (`onClashWin`/`onClashLose`/`beforeDamage`) and `playerAction` window already
-   exist, so a Ward reveal-window is a contained addition.
-5. **Then** the economy/meta layer (doc 07) and story mode (doc 06) — they sit on top
-   of a settled core and shouldn't be built until the core loop feels right.
+**Economy (doc 07)**
+- [ ] **Rarity-tier count** — brief wants the full 6 (common→legendary), all
+      **cosmetic**; earlier doc-07 note leaned 4 at launch. Reconcile.
+- [ ] Loot pool contents (runes + reagents), craft costs, coin floors.
 
-## What's explicitly *not* being changed
+## Engine deltas this implies (for when we build)
 
-- The **double-... wait — the single** colour-RPS *spell* clash stays the spine. (The
-  *field* clash is what's being removed, not the spell clash.)
-- **Persistent per-colour stacks, top-card-is-live** — untouched; it's the engine's
-  best original idea.
-- **Max-2-copies** — kept.
+Not a to-do yet — just the shape of the code change, so we remember the blast radius:
 
-## Notes for future edits of this folder
+- **`card.db.ts`** — spells become `base-modifier` + `class` + keyworded effects;
+  fields removed/retired; **quests** are a new card type with ordered tasks.
+- **`deck.schemas.ts`** — from `30 / max-2` to **13 singleton spells + 7 quests**
+  (two lists).
+- **`engine.board.ts`** — stacks become **tomes** (no burying); add **base attack**,
+  **shield**, and **active-quest** state per side; add a **quest deck**.
+- **`engine.turn.ts`** — new fixed order; attack step selects **colour + specific
+  learned spell**; effects resolve **post-damage**; **quest resolution** step; remove
+  field clash.
+- **`engine.game.ts`** — keep the wheel (`red>green>blue`); combat value = **base +
+  modifier**; **deck-out ≠ loss**.
+- **New: Seal / Shield / Burn / Forget** primitives and the **keyword** effect
+  framework.
 
-- This is a **living design set**, not a snapshot — edit these files in place as
-  decisions land (that's different from the `analysis/` snapshot convention, and
-  intentional for a working session).
-- When the core is settled and *built*, write a **new dated snapshot** (à la
-  `2026-08-17`) describing the game as-shipped, and freeze this folder as the record
-  of how we got there.
+## Suggested build sequence (once naming/knobs land)
+
+1. **Tome + base-attack + modifier combat** — the keystone; everything needs it.
+2. **Quests + ramp** (separate deck, tasks, abandon) — the second engine.
+3. **Keyword framework + Seal/Shield/Lose/Forget** — counterplay.
+4. **Colour × Class tags + a first class** — deckbuilding identity.
+5. **Re-card the DB** into the new model; retire fields.
+6. **Then** economy/story/live-ops (docs 06, 07).
+
+## Notes for future edits
+
+This is a **living design bible**, edited in place as decisions land (unlike the
+`2026-08-17` snapshot). When the core is built, write a fresh dated **review** of the
+game as-shipped and freeze this folder as the record of how we designed it.

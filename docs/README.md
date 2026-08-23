@@ -47,14 +47,29 @@ Proposes a new **reactive card type** as the centrepiece, and sketches the world
 naming, story mode, and a not-pay-to-win economy. **Actively edited as decisions
 land.**
 
-1. [Design goals & summary](./analysis/2026-08-22-design-evolution/01-design-goals-and-summary.md) — the four problems, the design pillars, and the summary of recommendations.
-2. [The one-action-per-turn rule](./analysis/2026-08-22-design-evolution/02-the-one-action-rule.md) — why it clogs the hand, and how to fix it without losing the tempo fork.
-3. [Removing fields & ambient effects](./analysis/2026-08-22-design-evolution/03-removing-fields-and-ambient-effects.md) — why fields are clunky, and an optional non-clashing "weather/omen" replacement.
-4. [The interactive layer](./analysis/2026-08-22-design-evolution/04-the-interactive-layer.md) — making combat more than RPS via a new card type (with a slot for your own idea).
-5. [Deck size: 30 vs 20](./analysis/2026-08-22-design-evolution/05-deck-size.md) — the case for a smaller, faster deck as one knob-set.
+The session **converged on a substantially redesigned game** — a persistent
+**Tome** (spellbook) board, **Quests** as an RPG-leveling ramp, a two-axis
+**Colour × Class** deckbuilding model, and **denial-based counterplay** (no
+graveyard). Docs 04 and 09–12 are the new core spec; 01/05/08 were updated to match;
+02/03/06/07 keep their original reasoning trails with resolution notes.
+
+*Front door & cross-cutting*
+1. [Design goals & summary](./analysis/2026-08-22-design-evolution/01-design-goals-and-summary.md) — pillars, the **decisions-locked** table, and what's still open.
+2. [The one-action-per-turn rule](./analysis/2026-08-22-design-evolution/02-the-one-action-rule.md) — the hand-clog problem (resolved by the tome + quests).
+3. [Removing fields & ambient effects](./analysis/2026-08-22-design-evolution/03-removing-fields-and-ambient-effects.md) — why fields are clunky; the parked weather/omen niche.
+
+*The redesigned core*
+4. [The core redesign](./analysis/2026-08-22-design-evolution/04-the-core-redesign.md) — the four new pillars and the canonical turn order (overview).
+9. [The Tome](./analysis/2026-08-22-design-evolution/09-the-tome.md) — persistent spellbooks, singleton, base attack + spell modifiers.
+10. [Quests & the ramp](./analysis/2026-08-22-design-evolution/10-quests-and-the-ramp.md) — Saga-like leveling, the separate quest deck, abandon rules.
+11. [Combat, keywords & counterplay](./analysis/2026-08-22-design-evolution/11-combat-keywords-and-counterplay.md) — keyword system, timing, and the Seal/Shield/Burn tiers.
+12. [Colour × Class](./analysis/2026-08-22-design-evolution/12-colour-and-class.md) — the two-axis archetype system (RPS colour × class synergy).
+
+*Format, world & meta*
+5. [Deck size & format](./analysis/2026-08-22-design-evolution/05-deck-size.md) — **13 spells + 7 quests = 20**, singleton, deck-out is not a loss.
 6. [World, theme & naming](./analysis/2026-08-22-design-evolution/06-world-theme-and-naming.md) — the plot, naming the creatures/peoples, and an in-world lexicon.
-7. [Economy & progression](./analysis/2026-08-22-design-evolution/07-economy-and-progression.md) — packs, rarities, crafting, loot, and the anti-pay-to-win guardrails.
-8. [Open questions & decisions](./analysis/2026-08-22-design-evolution/08-open-questions-and-decisions.md) — inconsistencies spotted, decisions needed from you, and next steps.
+7. [Economy & progression](./analysis/2026-08-22-design-evolution/07-economy-and-progression.md) — packs, cosmetic rarities, crafting, loot, and the anti-pay-to-win guardrails.
+8. [Decisions, evaluation & open questions](./analysis/2026-08-22-design-evolution/08-open-questions-and-decisions.md) — the ledger, the re-evaluation table, and the engine deltas for when we build.
 
 ---
 
