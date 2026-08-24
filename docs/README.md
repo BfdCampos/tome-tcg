@@ -26,6 +26,13 @@ Two kinds of folder live here, both dated `YYYY-MM-DD-slug` with numbered files:
   changes, not necessarily shipped code. Once a session's changes are built, a new
   **review** snapshot records the as-shipped game.
 
+> **Handoff convention.** Whenever we're **documenting and discussing** a design, the
+> **latest** analysis folder contains a **`HANDOFF.md`** — the read-me-first entry
+> point capturing current state, how we work, and exactly what to nail next, so a new
+> agent or session can pick up cleanly. Keep it current; carry a fresh one into any
+> new dated folder. The debate happens in chat — **the docs are the log**, kept terse
+> and split by topic.
+
 ## Reviews & sessions
 
 ### [`analysis/2026-08-17-initial-game-review/`](./analysis/2026-08-17-initial-game-review/)
@@ -52,6 +59,8 @@ The session **converged on a substantially redesigned game** — a persistent
 **Colour × Class** deckbuilding model, and **denial-based counterplay** (no
 graveyard). Docs 04 and 09–12 are the new core spec; 01/05/08 were updated to match;
 02/03/06/07 keep their original reasoning trails with resolution notes.
+
+**▶ [HANDOFF.md](./analysis/2026-08-22-design-evolution/HANDOFF.md) — read this first**: current state, how we work, and what to nail next.
 
 *Front door & cross-cutting*
 1. [Design goals & summary](./analysis/2026-08-22-design-evolution/01-design-goals-and-summary.md) — pillars, the **decisions-locked** table, and what's still open.

@@ -57,9 +57,53 @@ leveling fantasy on the card side, mirroring the quest ramp on the number side.
 4. **The tome is visible.** Hidden tomes would make the game an unreadable guess and
    kill the bluff pillar. Range public, pick hidden.
 
+## The top of the tome (continuous effects) — the positional layer
+
+We're **bringing back a meaningful "top of the stack"** — but only for **Continuous**
+effects (auras). The tome stays a fully-accessible spellbook (you can attack with
+*any* learned spell), *and* it's an **ordered pile with a designated top** (the
+"readied" spell). **Only the top spell's Continuous effect is active.**
+
+> Example — *Kindling* (🟢, Continuous: *all your red spells deal +3*). It only buffs
+> your red while *Kindling* sits on **top of your green tome**.
+
+**How the top is set (recommended rule — "cast/learn re-tops"):**
+- **Learning** a spell places it on **top** of its colour (freshly studied).
+- **Attacking** with a spell **brings it to the top** of its colour (you readied and
+  cast it).
+- Everything else in the tome stays accessible; only the *top* changes.
+
+This creates the weigh the design wants: to keep an aura live you must **not disturb
+that colour** — don't learn a new spell into it, and if you attack in it, attack
+*with the aura card itself*. Since you attack only one colour per turn, you're
+juggling three colour-tops with one lever a turn. Continuous-effect spells will
+therefore tend to have **low attack modifiers** (you park them on top, not swing with
+them) — a clean, self-balancing design space.
+
+Notes:
+- **Vanilla / Hit / Lose spells don't care about position** — the positional layer
+  only matters for the subset of cards with a Continuous effect. So the base game
+  stays simple; auras are opt-in depth.
+- Auras are **read at the moment they matter** (e.g. a damage-buff aura is evaluated
+  during damage calc), reusing the engine's old "top-of-stack is live" hook.
+- **Alternatives considered:** (a) auras active from *anywhere* in the tome — rejected,
+  removes the weigh and stacks infinitely; (b) *no* continuous effects, only
+  point-in-time triggers — the "super simple" path (see doc 11's effect taxonomy).
+  We're **leaning include**, gated to top-of-tome. Final commit tracked in doc 08.
+
+## Ways a spell leaves a tome (all deliberate, none routine)
+
+- **Forget** — the spell removes *itself* after resolving (its own printed cost).
+- **Burn** — rare, gated permanent destruction (doc 11, Tier 3).
+- **Unlearn / Bounce** — return a learned spell to its owner's **hand or deck**
+  (doc 11). Softer than Burn (not permanent) but a real tempo tax *and* it can knock
+  an aura off the top. Works on **your own** tome (utility: re-trigger a `Learn`,
+  reshuffle your top) or the **opponent's** (control). This is the home of "control"
+  archetypes.
+
 ## Open sub-questions
 
 - Is there a **cap** on tome size per colour, or is it just bounded by deck size /
   game length? (Leaning: no explicit cap; deck size bounds it naturally.)
-- Do we ever let a spell **leave** a tome? Only via **Forget** (self-removal) or
-  **Burn** (rare destruction) — see doc 11. Never as a routine effect.
+- **Top-of-tome rule** — confirm "learning **and** attacking re-top" (recommended)
+  vs "only attacking re-tops" vs "only learning sets top". (doc 08)

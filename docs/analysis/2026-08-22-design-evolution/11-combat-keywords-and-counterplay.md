@@ -21,6 +21,12 @@ vocabulary later**; the mechanics are what's locked.
 | **Seal** *(rider)* | A denial clause, usually inside a Hit | *Seal: opponent cannot cast blue spells next turn.* |
 | **Forget** *(rider)* | The spell **removes itself** from your tome after resolving | *…then Forget this spell.* |
 
+Plus one **persistent** category:
+
+| Keyword | When it applies | Example |
+|---|---|---|
+| **Continuous** *(aura)* | **While this spell is on top of its colour tome** (doc 09) | *Continuous: your red spells deal +3.* |
+
 Two resources referenced by effects:
 
 - **Shield** — a persistent buffer that absorbs incoming damage **before HP**;
@@ -29,6 +35,29 @@ Two resources referenced by effects:
 
 > We are **not** adding a keyword for "on hit" as prose — `Hit:` **is** the keyword.
 > Same for `Lose:`, `Learn:`. That's the whole point.
+
+## Spell-effect timing taxonomy (the "how simple do we go" decision)
+
+Every spell effect fires in exactly one of these windows. **This list is the
+complexity budget** — we deliberately keep it short so the game never becomes a
+Yu-Gi-Oh soup of interrupts.
+
+| Timing | Point-in-time or persistent | Resolves |
+|---|---|---|
+| **Learn** | point-in-time | at Prepare, when the card enters the tome |
+| **Hit** | point-in-time | after damage, if this spell won the clash |
+| **Lose** | point-in-time | after damage, if this spell lost the clash |
+| **Continuous** | **persistent** | continuously, *only while on top of its colour tome* |
+
+**The open decision (doc 08):** include **Continuous**, or go **super simple**
+(Learn/Hit/Lose only, everything is point-in-time)?
+- **Leaning include** — the design brief explicitly wants auras like *Kindling*
+  (*"all red spells +3"*), and gating them to **top-of-tome** (doc 09) keeps them
+  controllable and self-limiting.
+- **What we're *not* adding:** arbitrary windows like "start of turn", "before clash",
+  "when the opponent learns a spell", etc. They'd wreck the clean fixed order (doc 04)
+  and the mobile read. If a future effect seems to need one, that's a red flag to
+  redesign it into Learn/Hit/Lose/Continuous instead.
 
 ## Timing (from the canonical order, doc 04)
 
@@ -65,6 +94,22 @@ lost**. Mobile-clean: tap the opponent's colour → locked.
 > mild keeps pace and readability. (Alternative considered: "until you next win a
 > clash" — stickier but swingier. Parked.)
 
+### Tier 1.5 — Unlearn / Bounce (the control primitive)
+
+**Return a learned spell to its owner's hand or deck.** Softer than Burn (not
+permanent — they can re-learn it) but a real **tempo tax** (they spent a prepare to
+learn it; now they must spend another) and, crucially, it can **knock a Continuous
+aura off the top of a tome** (doc 09). Two directions:
+
+- **On the opponent** — the everyday *control* tool. Bounce their aura to shut it off,
+  or bounce a key spell to cost them tempo. Sits between Seal (nothing moves) and Burn
+  (permanent): the card moves but isn't gone.
+- **On yourself** — utility: return your own spell to re-trigger its `Learn`, or to
+  clear your colour's top and change which aura is live.
+
+This is the home of **control archetypes**. Keep bounce-to-**deck** rarer/stronger
+than bounce-to-**hand** (deck = they must redraw it too).
+
 ### Tier 2 — Shield / Heal on Lose (agency for the player losing the read)
 
 The clash loser normally does nothing. **`Lose:` clauses** give the losing pick
@@ -87,9 +132,10 @@ not so it has a default one.
 
 ## Design guardrails (recap)
 
-- Counterplay is **denial-first** (Tier 1), **mitigation-second** (Tier 2),
-  **destruction-last-and-rare** (Tier 3). No graveyard-as-resource, ever — you play
-  what you can see.
+- Counterplay ladder: **Seal** (deny use, nothing moves) → **Unlearn/Bounce**
+  (temporary removal + tempo tax, disrupts auras) → **Shield/Heal on Lose**
+  (mitigation) → **Burn** (permanent, rare, gated). No graveyard-as-resource, ever —
+  you play what you can see.
 - On-lose mitigation stays **small** and **costed** (low modifier).
 - Burn is **rare and conditional**; Forget is its honest price (you spend your own
   card).

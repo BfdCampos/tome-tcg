@@ -45,9 +45,29 @@ cleanliness** — a trade we're taking deliberately.
 
 ## Still open (need decisions or playtest)
 
+**The next things to nail (top of the pile)**
+- [ ] **Spell-effect taxonomy & Continuous effects.** Confirm the four timings —
+      Learn / Hit / Lose / **Continuous** (aura) — and that we **include Continuous**
+      rather than going super-simple (Learn/Hit/Lose only). Design brief wants auras
+      like *Kindling*; we're leaning include, gated to top-of-tome. (doc 11)
+- [ ] **Top-of-tome rule.** Continuous effects are active **only while the spell is on
+      top of its colour tome**. Confirm the setter rule: "**learning and attacking
+      both re-top**" (recommended) vs "only attacking" vs "only learning". (doc 09)
+- [ ] **Unlearn / Bounce** as the control primitive — return a learned spell to
+      hand/deck; works on your own tome (utility) or the opponent's (control); can
+      knock an aura off top. Confirm it's in, and hand-vs-deck strength. (docs 09, 11)
+- [ ] **Nail a starter card set for playtesting** — a small, concrete batch of spells
+      (across all three colours, a couple of Continuous auras, a couple of
+      Seal/Bounce/defensive cards, some vanilla hitters) **plus ~7 quests**, so we can
+      actually play turns and tune numbers. This is the gate to everything numeric.
+
 **Naming / vocabulary**
-- [ ] Final **keyword names** (in-world) for Learn / Hit / Lose / Seal / Forget.
-- [ ] **Class list** — count, names, identities (ties to docs 06, 07, 12).
+- [ ] Final **keyword names** (in-world) for Learn / Hit / Lose / Seal / Forget /
+      Continuous / Unlearn.
+- [ ] **Classes evolve with the cards — no upfront list.** Spell **classes** (the
+      archetype/type axis, doc 12) are added and refined *as we design cards*, not
+      planned as a fixed roster. Don't spend effort on a "divinities"/class list up
+      front; let archetypes emerge from the starter set and grow.
 - [ ] Species & peoples names (doc 06): **Tomelings**? **Emberkin/Thornkin/Tidekin**?
 
 **Rules knobs**
