@@ -9,15 +9,13 @@ Monorepo: pnpm workspace + turbo, two apps:
 
 Game **design** lives in `docs/analysis/<YYYY-MM-DD-slug>/` (see [`DOCUMENTATION.md`](DOCUMENTATION.md)).
 Dated **reviews** are frozen snapshots; **design sessions** are living docs edited in
-place as decisions land. **When we're documenting and discussing a design, the latest
-analysis folder contains a `HANDOFF.md`** — read it first; it holds current state, how
-we work, and what to nail next. The debate happens in chat and **the docs are the
-log** (terse, split by topic). A **new session/agent starts a new dated folder** and
-carries a fresh `HANDOFF.md` into it. The latest folder — the live frontier — is
-[`docs/analysis/2026-08-24-proficiency-and-scaling/`](docs/analysis/2026-08-24-proficiency-and-scaling/HANDOFF.md)
-(proficiency-by-scaling + this session's deltas); it builds on the four-pillar bible in
-[`docs/analysis/2026-08-22-design-evolution/`](docs/analysis/2026-08-22-design-evolution/HANDOFF.md)
-(the Tome, Quests-as-ramp, Colour×Class, denial counterplay).
+place as decisions land. **When we're documenting and discussing a design: open the
+newest dated folder under `docs/analysis/` (they're `YYYY-MM-DD`-named, so the latest
+one sorts last) and read its `HANDOFF.md` first** — it holds current state, how we
+work, and what to nail next, and points back to whatever earlier folders it builds on.
+Don't hardcode which folder is current *here* — the date is the pointer. A new
+session/agent starts a new dated folder and carries a fresh `HANDOFF.md` into it. The
+debate happens in chat and **the docs are the log** (terse, split by topic).
 
 ## First-time setup
 

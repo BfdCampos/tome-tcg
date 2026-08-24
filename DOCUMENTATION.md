@@ -65,10 +65,10 @@ The session **converged on a substantially redesigned game** — a persistent
 **Tome** (spellbook) board, **Quests** as an RPG-leveling ramp, a two-axis
 **Colour × Class** deckbuilding model, and **denial-based counterplay** (no
 graveyard). Docs 04 and 09–12 are the new core spec; 01/05/08 were updated to match;
-02/03/06/07 keep their original reasoning trails with resolution notes. **The
-four-pillar design bible** — continued by the 2026-08-24 session below.
+02/03/06/07 keep their original reasoning trails with resolution notes. **Actively
+edited as decisions land.**
 
-**▶ [HANDOFF.md](./docs/analysis/2026-08-22-design-evolution/HANDOFF.md)**: that session's state, how we work, and its frontier.
+**▶ [HANDOFF.md](./docs/analysis/2026-08-22-design-evolution/HANDOFF.md) — read this first**: current state, how we work, and what to nail next.
 
 *Front door & cross-cutting*
 1. [Design goals & summary](./docs/analysis/2026-08-22-design-evolution/01-design-goals-and-summary.md) — pillars, the **decisions-locked** table, and what's still open.
@@ -87,15 +87,3 @@ four-pillar design bible** — continued by the 2026-08-24 session below.
 6. [World, theme & naming](./docs/analysis/2026-08-22-design-evolution/06-world-theme-and-naming.md) — the plot, naming the creatures/peoples, and an in-world lexicon.
 7. [Economy & progression](./docs/analysis/2026-08-22-design-evolution/07-economy-and-progression.md) — packs, cosmetic rarities, crafting, loot, and the anti-pay-to-win guardrails.
 8. [Decisions, evaluation & open questions](./docs/analysis/2026-08-22-design-evolution/08-open-questions-and-decisions.md) — the ledger, the re-evaluation table, and the engine deltas for when we build.
-
-### [`analysis/2026-08-24-proficiency-and-scaling/`](./docs/analysis/2026-08-24-proficiency-and-scaling/) — *live frontier*
-
-The current session. Continues the 2026-08-22 bible: confirms the taxonomy /
-top-of-tome / bounce locks, adds **proficiency-by-scaling** (a per-card "read the
-board" system, not a keyword), and records quest + terminology (**Power / Attack**)
-deltas. Supersedes the bible on anything it restates; the bible stays the full spec.
-
-**▶ [HANDOFF.md](./docs/analysis/2026-08-24-proficiency-and-scaling/HANDOFF.md) — read this first**: current state and what to nail next (the starter set).
-
-1. [Proficiency & scaling](./docs/analysis/2026-08-24-proficiency-and-scaling/01-proficiency-and-scaling.md) — gate-at-use, cards that read live game-state, the menu of read-axes.
-2. [Decisions & deltas](./docs/analysis/2026-08-24-proficiency-and-scaling/02-decisions-and-deltas.md) — the session's locks and what they change in the bible.
