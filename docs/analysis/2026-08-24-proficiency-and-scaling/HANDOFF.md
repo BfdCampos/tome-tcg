@@ -30,39 +30,52 @@ deck-out ≠ loss.
 
 ## Locked / added this session (2026-08-24)
 
-- **Effect taxonomy = Learn / Hit / Lose / Continuous** — Continuous auras IN, gated to
-  top-of-tome. (bible doc 11)
-- **Top-of-tome = learning AND attacking both re-top**; auras live only on top. (doc 09)
-- **Unlearn/Bounce IN** as the control primitive (to-hand common, to-deck rarer). (doc 11)
+- **Effect taxonomy = Prepare / [clash pair] / Aura** — auras IN, gated to top-of-tome
+  (the **active spell**). (bible doc 11, renamed in doc 03)
+- **Top-of-tome = preparing AND casting both re-top**; auras live only on top. (doc 09)
+- **Bounce / Bury IN** as the control primitive (bounce-to-hand, bury-to-deck). (doc 11)
 - **Proficiency = scaling, gate-at-*use* not access; a per-card feature, not a keyword.**
   **ALL read-axes are IN** (diversity is the goal; one good card justifies an axis).
-  → full framework in **`01-proficiency-and-scaling.md`** (NEW).
+  → full framework in **`01-proficiency-and-scaling.md`**.
 - **Choose-1-of-3 quest opener LOCKED.**
 - **Rarity is PURELY COSMETIC** — art/frame/border/animations only, never power; WoW
   terms are just cosmetic-tier labels. (reaffirms bible doc 08; see doc 02)
-- **Quest & terminology deltas** (varied rewards, rare thematic OR-hatches, opener,
-  multi cash-in, Power/Attack) → **`02-decisions-and-deltas.md`**.
+- **Quest & terminology deltas** → **`02-decisions-and-deltas.md`**.
+- **The naming pass (mostly done)** → **`03-vocabulary-and-keywords.md`** (NEW). Actual
+  vs in-world word ledger. Most terms locked; **two words still open** (see below).
 
-## Terminology (working — naming still open)
+## Terminology — the naming pass landed (see doc 03)
 
-**Power** = character stat (was "base attack"; starts 10, raised only by quests).
-**Attack** = a spell's modifier. **Damage on connect = Power + Attack.**
+**Locked:** `Prepare:` (spell enters a tome — retired `Learn:`), `Aura:`, `Seal:`,
+`Bounce:` (to hand), `Bury:` (to deck), `Destroy` (permanent; "Forget" killed, "Burn"
+freed for fire flavour). **Shield / Heal / Health (HP)**; at 0 HP you're **knocked out**.
+**Power** = character stat. **Deck** (in-world *Bundle*) / **Collection** (in-world
+*Library*) / **Tome** (per-colour board pile) / **active spell** (top of a tome).
+**Quest** with **Objectives** (no trophies); **Quest Deck** (in-world *Quest Journey*).
+Turn beats: **Draw · Prepare · Cast · Clash**.
 
-## ⭐ NEXT SESSION likely starts here — NAMING / VOCABULARY
+**⛔ Two words STILL UNDECIDED — do not placeholder past them:**
+- **The clash-outcome verb pair** (won-clash / lost-clash tabs). Many lanes tried and
+  rejected — see doc 03 §6 for the reject list. Get the user to pick a **pole**
+  (plain-and-clear vs evocative-and-magical) before generating more.
+- **The spell damage modifier** (a spell's `+8`). Standing favourite **Potency**
+  (provisional); alternatives were all weaker. **Damage on connect = Power + [this].**
 
-The user plans to pick up **naming** next. Nothing below is named to satisfaction:
-- **Power / Attack** — provisional; the character-stat vs spell-modifier split is
-  agreed, the *words* are not.
-- **The scaling patterns** — we actively dislike Rank / Mastery / Overpower. Need
-  in-world names (and note these are NOT printed keywords — see doc 01).
-- **The keyword taxonomy** (Learn / Hit / Lose / Continuous / Seal / Bounce / Burn /
-  Forget …) — bible doc 11 flags this as its own pass; "Seal" is the quality bar
-  (descriptive, in-theme). Do this alongside Power/Attack.
-- Then let **classes emerge** from named material.
+## ⭐ NEXT SESSION likely starts here
+
+1. **Close the two ⛔ words** above (clash pair + spell modifier) — the only card-facing
+   vocab gaps left. Doc 03 §6 has the full context and reject lists.
+2. **Classes** — the plan was "let classes emerge from named material" (doc 12); the
+   material now exists. How many, names/identities, synergy weight (lean light-to-medium),
+   neutral "glue" cards y/n.
+3. **Scaling pattern names** — internal only, never printed (doc 01). Dislike
+   Rank/Mastery/Overpower. Low priority.
+4. **Wider world naming (doc 06)** — species (Tomelings?), peoples' `-kin` suffix,
+   in-world book name. Out of scope for card vocab but unresolved.
 
 ## What to nail next (priority order)
 
-1. **Naming / vocabulary** — the ⭐ block above.
+1. **Finish naming** — the ⭐ block above (two open words, then classes).
 2. **The concrete starter set** — the real gate to all numbers. **NOT YET** — the user
    wants to handle a few more things first, and we'll build cards then. When we do:
    ~13 singleton spells (all three colours: vanilla hitters, ~2 auras, ~2 Seal,
