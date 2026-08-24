@@ -44,13 +44,3 @@ that would force an edit here every session. Instead:
 - **Open the newest folder** (they sort by their `YYYY-MM-DD` name) **and start at its
   `HANDOFF.md`** — it captures the current state, how we work, what to nail next, and
   links back to whatever earlier folders it builds on.
-
-### Corrections to frozen snapshots
-
-Reviews are snapshots and aren't edited after their date, so any material correction
-is noted here instead (this list grows only when a frozen review needs a fix — not
-per session):
-
-- **2026-08-17 review** — describes the colour wheel as `red > blue > green > red`
-  (a bug; intended and since corrected to `red > green > blue > red`, **PR #1**), and
-  notes a missing win condition (a player at 0 HP now loses, added in **PR #2**).
