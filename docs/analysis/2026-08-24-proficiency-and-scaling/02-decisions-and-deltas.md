@@ -38,10 +38,10 @@ keyword taxonomy, doc 11).
   bolted onto every hard task. Use them **only when thematically earned** (e.g. an
   Aeromancer air/steam quest: *"land a hit with red **or** blue"*). The general
   anti-lock valve is **abandon**, not a universal OR clause.
-- **Opener = deal 3 of your 7 quests, choose 1**, rest random. A one-time match-start
-  pick (reuses the mulligan-style picker). Real anti-mana-screw / anti-prize-card
-  payoff: never screwed by a dead random opener, never blindly locking a key card away.
-  *(Value vs. the extra UI still open — decide when we mock the match-start screen.)*
+- **Opener = deal 3 of your 7 quests, choose 1** (LOCKED), rest random. A one-time
+  match-start pick (reuses the mulligan-style picker). Real anti-mana-screw /
+  anti-prize-card payoff: never screwed by a dead random opener, never blindly locking
+  a key card away.
 - **Cash in as many tasks as you complete in a turn** — no per-turn cap; quest design
   makes multi-cash-in naturally rare.
 - **Capstone tasks may grant non-ramp haymakers** — yes.
@@ -50,10 +50,23 @@ keyword taxonomy, doc 11).
 ## New system this session
 
 - **Proficiency by scaling** — see `01-proficiency-and-scaling.md`.
+- **Read-axes: ALL are IN** (doc 01). We don't pre-trim the menu; diversity is the
+  goal and one good card justifies an axis.
+
+## Rarity is PURELY COSMETIC (reaffirms bible doc 08)
+
+No tension to reconcile — the "cosmetic only" ledger line stands, fully:
+
+- Rarity controls **only the visual treatment** of a card: art, frame, border,
+  animations. **It never touches power, Attack, effects, or any gameplay.** Two cards
+  of different rarity can be mechanically identical.
+- **WoW terminology** (common / uncommon / rare / epic / legendary …) is borrowed
+  **purely as labels for the cosmetic tiers** — the naming is the *only* thing we take
+  from WoW here. Tier count is a later economy detail (doc 07), not a power question.
+- Cards may have different **drop chances** from packs / PvE, but that's **behind the
+  scenes and non-visual** — it is not the same thing as the cosmetic rarity and carries
+  no gameplay weight.
 
 ## Noted, parked
 
-- **Rarity** leans **WoW gear tiers** (not bound to it). Possible tension with the
-  bible doc 08 ledger line "rarity = cosmetic only" — flag for reopening if tiers ever
-  touch power. Reconcile in the economy pass (doc 07).
 - **Keyword taxonomy** and **class list** still to be done.

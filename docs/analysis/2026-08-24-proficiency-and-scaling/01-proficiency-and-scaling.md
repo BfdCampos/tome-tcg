@@ -38,6 +38,10 @@ tiny rules footprint.
 | **Denial state** (what's Sealed) | *control payoff* | `+4 for each spell currently Sealed` |
 | **Sacrifice** (spend the book) | *fuel / channel* | `Forget another spell in this tome: +20` |
 
+**All of these axes are IN.** Diversity is the whole point — a single good card that
+reads, say, the size of the opponent's green tome is enough to justify the mechanic
+existing. We don't pre-trim the menu; we draw from all of it as cards want it.
+
 The first three are the axes we started from; the rest are the wider space the same
 primitive opens. The stand-outs for *this* game:
 
@@ -49,8 +53,9 @@ primitive opens. The stand-outs for *this* game:
 
 ## Design laws for scaling cards
 
-- **Only some cards scale.** Flat is the default; scaling is opt-in depth (and a
-  natural rarity / archetype signal — see bible doc 07's tiers).
+- **Only some cards scale.** Flat is the default; scaling is opt-in depth. (It is
+  **not** a rarity signal — rarity is purely cosmetic and never tracks power; see
+  `02-decisions-and-deltas.md`.)
 - **One read per card.** A scaling card references **one** value in **one** clause.
   If it needs two conditions to explain, redesign it. (Same discipline as the keyword
   rule in doc 11 — the card states its own effect, never the game's rules.)
@@ -75,7 +80,7 @@ primitive opens. The stand-outs for *this* game:
 ## Open
 
 - **Naming** — the scaling patterns themselves (we dislike Rank/Mastery/Overpower);
-  and Power/Attack (see `02-decisions-and-deltas.md`). Part of the vocabulary pass.
-- **Which read-axes make the starter set** — likely a handful, not all nine, so the
-  first playtest set stays legible.
-- **All balance** — thresholds, growth rates, execute cutoffs: playtest-only.
+  and Power/Attack (see `02-decisions-and-deltas.md`). The vocabulary pass — likely
+  **next session**.
+- **All balance** — thresholds, growth rates, execute cutoffs: playtest-only, and
+  **not yet** (no starter set until we start making cards).

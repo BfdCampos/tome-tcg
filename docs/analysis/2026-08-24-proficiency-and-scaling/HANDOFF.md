@@ -35,31 +35,44 @@ deck-out ≠ loss.
 - **Top-of-tome = learning AND attacking both re-top**; auras live only on top. (doc 09)
 - **Unlearn/Bounce IN** as the control primitive (to-hand common, to-deck rarer). (doc 11)
 - **Proficiency = scaling, gate-at-*use* not access; a per-card feature, not a keyword.**
+  **ALL read-axes are IN** (diversity is the goal; one good card justifies an axis).
   → full framework in **`01-proficiency-and-scaling.md`** (NEW).
-- **Quest & terminology deltas** (varied rewards, rare thematic OR-hatches, choose-1-of-3
-  opener, multi cash-in, Power/Attack) → **`02-decisions-and-deltas.md`**.
+- **Choose-1-of-3 quest opener LOCKED.**
+- **Rarity is PURELY COSMETIC** — art/frame/border/animations only, never power; WoW
+  terms are just cosmetic-tier labels. (reaffirms bible doc 08; see doc 02)
+- **Quest & terminology deltas** (varied rewards, rare thematic OR-hatches, opener,
+  multi cash-in, Power/Attack) → **`02-decisions-and-deltas.md`**.
 
 ## Terminology (working — naming still open)
 
 **Power** = character stat (was "base attack"; starts 10, raised only by quests).
 **Attack** = a spell's modifier. **Damage on connect = Power + Attack.**
 
+## ⭐ NEXT SESSION likely starts here — NAMING / VOCABULARY
+
+The user plans to pick up **naming** next. Nothing below is named to satisfaction:
+- **Power / Attack** — provisional; the character-stat vs spell-modifier split is
+  agreed, the *words* are not.
+- **The scaling patterns** — we actively dislike Rank / Mastery / Overpower. Need
+  in-world names (and note these are NOT printed keywords — see doc 01).
+- **The keyword taxonomy** (Learn / Hit / Lose / Continuous / Seal / Bounce / Burn /
+  Forget …) — bible doc 11 flags this as its own pass; "Seal" is the quality bar
+  (descriptive, in-theme). Do this alongside Power/Attack.
+- Then let **classes emerge** from named material.
+
 ## What to nail next (priority order)
 
-1. **The concrete starter set** — the real gate to all numbers:
-   - ~13 singleton spells across all three colours: a few vanilla hitters, ~2 auras,
-     ~2 Seal, ~1 Bounce, ~2 defensive (`Lose:` Shield/Heal), ~1 Burn haymaker, a couple
-     conditional, and a **few scaling cards** (doc 01) — **pick which read-axes debut**.
-   - ~7 quests: ordered tasks, 1–2 loser-completable, varied reward tables, OR-hatches
-     only where thematically earned.
-   - Design laws: no spell strictly-better than another in its colour; a card states its
-     own effect in keywords, never the game's rules.
-2. **Tune numbers** by playing turns: Power 10?, Attack band, ramp curve, starting HP
+1. **Naming / vocabulary** — the ⭐ block above.
+2. **The concrete starter set** — the real gate to all numbers. **NOT YET** — the user
+   wants to handle a few more things first, and we'll build cards then. When we do:
+   ~13 singleton spells (all three colours: vanilla hitters, ~2 auras, ~2 Seal,
+   ~1 Bounce, ~2 defensive, ~1 Burn, some conditional, some scaling) + ~7 quests
+   (ordered tasks, 1–2 loser-completable, varied rewards). Design law: no spell
+   strictly-better than another in its colour.
+3. **Tune numbers** by playing turns: Power 10?, Attack band, ramp curve, starting HP
    (test 80?), hand size, mulligan, Seal duration (lean 1).
-3. **Finalise vocabulary** — keyword taxonomy (doc 11) + terminology (Power/Attack and
-   names for the scaling patterns); let **classes emerge** from the set.
-4. **Economy** later — rarity-tier count (brief wants 6; bible doc 07 leaned 4; user
-   leans **WoW gear tiers**, not bound to it) + loot/craft. World/naming in doc 06.
+4. **Economy** later — flesh out loot/craft/packs and the **cosmetic** rarity tiers
+   (count TBD; purely visual, WoW-style labels). World/naming in doc 06.
 
 ## Don't re-litigate (see bible doc 08)
 
