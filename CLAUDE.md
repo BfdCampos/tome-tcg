@@ -5,6 +5,17 @@ Monorepo: pnpm workspace + turbo, two apps:
 - `apps/tome-web` — Remix (Vite, SSR off) frontend, client-only. Runs on **:5173**.
 - `apps/tome-api` — Elysia API on **Bun**, SQLite (libsql) DB, Lucia auth via GitHub OAuth. Runs on **:8080**.
 
+## Design docs & handoff convention
+
+Game **design** lives in `docs/analysis/<YYYY-MM-DD-slug>/` (see [`DOCUMENTATION.md`](DOCUMENTATION.md)).
+Dated **reviews** are frozen snapshots; **design sessions** are living docs edited in
+place as decisions land. **When we're documenting and discussing a design, the latest
+analysis folder contains a `HANDOFF.md`** — read it first; it holds current state, how
+we work, and what to nail next. The debate happens in chat and **the docs are the
+log** (terse, split by topic). The current active design is
+[`docs/analysis/2026-08-22-design-evolution/`](docs/analysis/2026-08-22-design-evolution/HANDOFF.md)
+— a ground-up redesign (the Tome, Quests-as-ramp, Colour×Class, denial counterplay).
+
 ## First-time setup
 
 Package manager is pnpm (`packageManager: pnpm@8.5.1` in root `package.json`), runtime for the API is Bun. Neither may be preinstalled in a fresh container — no sudo is available in this environment, so install both without root:
