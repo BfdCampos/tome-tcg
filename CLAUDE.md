@@ -7,7 +7,7 @@ Monorepo: pnpm workspace + turbo, two apps:
 
 ## Design docs & handoff convention
 
-Game **design** lives in `docs/analysis/<YYYY-MM-DD-slug>/` (see `docs/README.md`).
+Game **design** lives in `docs/analysis/<YYYY-MM-DD-slug>/` (see [`DOCUMENTATION.md`](DOCUMENTATION.md)).
 Dated **reviews** are frozen snapshots; **design sessions** are living docs edited in
 place as decisions land. **When we're documenting and discussing a design, the latest
 analysis folder contains a `HANDOFF.md`** — read it first; it holds current state, how
