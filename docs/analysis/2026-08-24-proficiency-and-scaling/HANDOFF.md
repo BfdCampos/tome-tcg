@@ -43,6 +43,10 @@ deck-out ≠ loss.
 - **Quest & terminology deltas** → **`02-decisions-and-deltas.md`**.
 - **The naming pass (mostly done)** → **`03-vocabulary-and-keywords.md`** (NEW). Actual
   vs in-world word ledger. Most terms locked; **two words still open** (see below).
+- **Technical platform/engine recommendation** → **`04-technical-platform-and-engine.md`**
+  (NEW). Mobile+PC. Recommendation, not locked: keep the authoritative rules engine in TS
+  on the server; ship one web/React client wrapped via PWA + Capacitor (mobile) + Tauri
+  (desktop); reach for Godot only if the card-juice bar demands it.
 
 ## Terminology — the naming pass landed (see doc 03)
 
@@ -72,6 +76,9 @@ Turn beats: **Draw · Prepare · Cast · Clash**.
    Rank/Mastery/Overpower. Low priority.
 4. **Wider world naming (doc 06)** — species (Tomelings?), peoples' `-kin` suffix,
    in-world book name. Out of scope for card vocab but unresolved.
+5. **Technical: ratify the engine call** (doc 04) — approve the web-wrap path or pick
+   Godot; then the client-framework, realtime-transport, and card-content-pipeline
+   sub-questions in doc 04 §"Things to decide". Independent of the design work above.
 
 ## What to nail next (priority order)
 
