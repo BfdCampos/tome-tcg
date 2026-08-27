@@ -47,6 +47,15 @@ deck-out ≠ loss.
   (NEW). Mobile+PC. Recommendation, not locked: keep the authoritative rules engine in TS
   on the server; ship one web/React client wrapped via PWA + Capacitor (mobile) + Tauri
   (desktop); reach for Godot only if the card-juice bar demands it.
+- **Unity vs. the web client — full cost/benefit** → **`05-unity-and-client-engine.md`**
+  (NEW, 2026-08-27). Driver: premium juice. Key finding: doc 04 undersold the repo — there's a
+  **working server-authoritative TS engine** (async-generator state/VFX/log stream over WS) +
+  a **Pixi 8 juice pipeline** already running, but it encodes the *old* design, so the rules
+  get rewritten regardless. Recommendation: build the new-design rules once as a clean TS
+  `packages/engine`, keep a disciplined serialised client↔server event protocol, keep pushing
+  juice in Pixi — which makes **Path A (Unity client + TS brain)** a cheap swap *later* if the
+  juice bar proves it. Don't take Path B (all-in C#). Suggested cheap tiebreaker: a one-sequence
+  Pixi-vs-Unity juice spike. **Not locked — awaiting the user.**
 
 ## Terminology — the naming pass landed (see doc 03)
 
@@ -58,12 +67,15 @@ freed for fire flavour). **Shield / Heal / Health (HP)**; at 0 HP you're **knock
 **Quest** with **Objectives** (no trophies); **Quest Deck** (in-world *Quest Journey*).
 Turn beats: **Draw · Prepare · Cast · Clash**.
 
-**⛔ Two words STILL UNDECIDED — do not placeholder past them:**
-- **The clash-outcome verb pair** (won-clash / lost-clash tabs). Many lanes tried and
-  rejected — see doc 03 §6 for the reject list. Get the user to pick a **pole**
-  (plain-and-clear vs evocative-and-magical) before generating more.
-- **The spell damage modifier** (a spell's `+8`). Standing favourite **Potency**
-  (provisional); alternatives were all weaker. **Damage on connect = Power + [this].**
+**Update 2026-08-27:**
+- ✅ **Spell damage modifier LOCKED = `Potency`.** Damage on connect = **Power + Potency**.
+- 🟡 **Clash-outcome pair: pole chosen (`plain-and-clear`), words still open.** `Deal:`/`Take:`,
+  `Beat:`/`Yield:`, `Best:`/`Fold:` all **rejected** by the user ("these are bad") — so even the
+  old favourite `Deal:`/`Take:` is dead now. The plain action-verb lane is thin; doc 03 §6 has
+  the standing note to try **state/condition words** (a card's status, not an action) next, and
+  the winner tab must read for *good-on-lose* effects (heal/shield) too, not just damage.
+
+**⛔ One word STILL UNDECIDED — do not placeholder past it:** the clash-outcome pair (above).
 
 ## ⭐ NEXT SESSION likely starts here
 
@@ -76,9 +88,13 @@ Turn beats: **Draw · Prepare · Cast · Clash**.
    Rank/Mastery/Overpower. Low priority.
 4. **Wider world naming (doc 06)** — species (Tomelings?), peoples' `-kin` suffix,
    in-world book name. Out of scope for card vocab but unresolved.
-5. **Technical: ratify the engine call** (doc 04) — approve the web-wrap path or pick
-   Godot; then the client-framework, realtime-transport, and card-content-pipeline
-   sub-questions in doc 04 §"Things to decide". Independent of the design work above.
+5. **Technical: the engine/client call** — now framed by **doc 05** (Unity cost/benefit) on top
+   of doc 04. The lead recommendation is: **rewrite the rules as a clean TS `packages/engine`
+   for the new four-pillar design** (highest-value technical step, needed on every path), keep a
+   **serialised client↔server event protocol**, keep pushing **Pixi** juice — which preserves
+   **Path A (Unity client, TS brain)** as a cheap later swap. Open user questions in doc 05:
+   two-language tax acceptable? is console/Switch ever a goal? want the Pixi-vs-Unity juice
+   spike? Independent of the design work above.
 
 ## What to nail next (priority order)
 

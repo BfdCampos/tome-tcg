@@ -52,7 +52,7 @@ also signals *something imminent* — a clash is coming. So the on-enter-tome ke
 | Restore health now | **Heal** | — | |
 | Life total | **Health** (UI shorthand **HP**) | knocked out (not death) | **Never** "health points". At 0 HP you're **knocked out**, Pokémon-style — it's a cute game. |
 | Character stat (starts 10, raised only by quests) | **Power** | "grows in power" | Locked. The character *grows in power* / *uses its power to attack*. There is no separate level counter — Power **is** the level. |
-| A spell's damage modifier (`+8`, `+0`, or a scaling clause) | ⛔ **UNDECIDED** | — | Leading candidate **Potency**. **Not locked — see §6.** |
+| A spell's damage modifier (`+8`, `+0`, or a scaling clause) | **Potency** | — | **LOCKED (2026-08-27).** "Power + 8 Potency" is card-facing law. |
 | Damage on connect | **Power + [the modifier above]** | — | |
 
 ---
@@ -115,14 +115,20 @@ a tome) → Cast (throw it in the clash) **is** the casting arc. No WoW-style ca
    - cute-silly (`spark`/`fizzle`, `flare`/`fizzle`, `snap`/`slip`, `tag`/`zap`) — too silly.
    The target is narrow: **two genuinely different, natural words** (not a word + its past
    tense), **clash-scoped not match-scoped**, simple enough for a kid, neither too grand nor
-   too cutesy. Last two floated but not chosen: `Deal:`/`Take:` (plain) and `Wax:`/`Wane:`
-   (magical). Best next move: get the user to pick a **pole** (plain-and-clear vs
-   evocative-and-magical) before generating, instead of guessing across all lanes.
+   too cutesy.
+   **Update 2026-08-27 — pole chosen: `plain-and-clear`** (not evocative-magical). Still not
+   solved *within* that pole. Fresh plain candidates pitched and **rejected** this session
+   (don't re-pitch): `Deal:`/`Take:`, `Beat:`/`Yield:`, `Best:`/`Fold:` — user: "these are
+   bad." So `Deal:`/`Take:` (the long-standing plain favourite) is now **also rejected**, not
+   just unchosen. The plain lane is proving thin; the winner tab must read naturally whether it
+   hands out *damage* **or** a *good-on-lose* effect (heal/shield-on-lose). Next move: keep
+   generating **plain** pairs only — but widen past the action-verb framing (try
+   state/status/role words, e.g. tabs read as a condition the card is in, not an action it
+   takes) before considering a pole change.
 
-2. **The spell damage modifier** — the word for a spell's `+8`. **Potency** is the standing
-   favourite (means exactly this; not truly archaic; context carries a kid through "8
-   Potency"). Alternatives tried and found weaker: Force, Kick, Juice, Muscle, Impact, Charge,
-   Bite, Edge, Punch, Damage. Leave as **Potency (provisional)** until the user locks it.
+2. ~~**The spell damage modifier**~~ — **RESOLVED (2026-08-27): locked as `Potency`.** Damage
+   on connect = **Power + Potency**. (Rejected alternatives, for the record: Force, Kick, Juice,
+   Muscle, Impact, Charge, Bite, Edge, Punch, Damage.)
 
 ---
 
