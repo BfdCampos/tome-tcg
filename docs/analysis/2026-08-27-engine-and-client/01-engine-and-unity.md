@@ -1,9 +1,11 @@
 # Unity & the client engine — the real cost of each path
 
-> Follows on from **doc 04** (platform recommendation). The user is pulling toward a real
-> game engine (**Unity**), driven specifically by the **premium juice/animation** bar —
-> Hearthstone-tier card feel. This doc lays out the honest cost/benefit of the paths so the
-> call can be made with numbers, not vibes. **A recommendation, not a locked decision.**
+> **2026-08-27 session, doc 01.** Follows on from the platform recommendation in
+> [`../2026-08-24-proficiency-and-scaling/04-technical-platform-and-engine.md`](../2026-08-24-proficiency-and-scaling/04-technical-platform-and-engine.md)
+> (referred to below as **"doc 04"**). The user is pulling toward a real game engine
+> (**Unity**), driven specifically by the **premium juice/animation** bar — Hearthstone-tier
+> card feel. This doc lays out the honest cost/benefit of the paths so the call can be made
+> with numbers, not vibes. **A recommendation, not a locked decision.**
 
 ## First: correct doc 04's framing of the repo
 
@@ -32,7 +34,8 @@ throw the client half away for Unity."
 **The engine encodes the OLD design.** It has `field` cards and `spell` cards, `attack`/`heal`
 numbers, an `onClashWin`/`onClashLose` taxonomy — the pre-redesign model. It has **no** Tome
 piles, **no** Quests-as-ramp, **no** Prepare/active-spell/Aura, **no** Seal/Bounce/Bury/Destroy,
-**no** Power+Potency, **no** proficiency scaling. (See the 2026-08-22 bible + this folder.)
+**no** Power+Potency, **no** proficiency scaling. (See the 2026-08-22 bible + the
+2026-08-24 folder.)
 
 ⇒ **The rules engine gets substantially rewritten no matter which client we choose.** That's
 the single most important cost fact in this whole decision, and it cuts against the instinct
