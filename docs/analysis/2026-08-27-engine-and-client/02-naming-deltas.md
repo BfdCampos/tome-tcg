@@ -12,21 +12,22 @@ Closes doc-03 §6 item 2. A spell's `+8` is its **Potency**. **Damage on connect
 Potency.** Card-facing law. (Rejected alternatives, for the record: Force, Kick, Juice,
 Muscle, Impact, Charge, Bite, Edge, Punch, Damage.)
 
-## 🟡 IN PROGRESS — the clash-outcome pair: pole chosen, words still open
+## ✅ LOCKED — the clash-outcome pair = `Clash Win:` / `Clash Lose:`
 
-Doc-03 §6 item 1 (the two tabs: *won-the-clash* / *lost-the-clash*).
+Closes doc-03 §6 item 1 (the two tabs: *won-the-clash* / *lost-the-clash*). After the whole
+naming search (win/lose, same-root inflections, spatial, hit/miss, cute-silly, and this
+session's `Deal:`/`Take:`, `Beat:`/`Yield:`, `Best:`/`Fold:` — all rejected), the decision is
+to **stop being clever and be literal**: the tabs are simply **`Clash Win:`** and
+**`Clash Lose:`**.
 
-- **Pole chosen: `plain-and-clear`** (over evocative-and-magical).
-- **Rejected this session** (do not re-pitch): `Deal:`/`Take:`, `Beat:`/`Yield:`,
-  `Best:`/`Fold:`. User verdict: "these are bad." So the long-standing plain favourite
-  `Deal:`/`Take:` is now **dead**, not merely unchosen.
-- **Still open.** The plain *action-verb* lane is proving thin. Two live constraints to
-  design against next time:
-  1. the winner tab must read naturally whether it hands out **damage** *or* a
-     **good-on-lose** effect (heal / shield-on-lose is core to counterplay-by-denial), and
-  2. worth trying **state/condition words** — tabs that read as *a status the card is in*,
-     not *an action it takes* — before considering a pole change.
-- Everything else in the doc-03 ledger stays locked.
+- Maximally clear for a kid; zero ambiguity; scoped to the clash (not the match) by the word
+  "Clash" itself.
+- Reads fine whether the tab hands out damage **or** a good-on-lose effect: `Clash Lose:` is
+  just "if you lose the clash," and "gain 10 Shield" sits under it naturally.
+- Bonus: aligns 1:1 with the engine's existing hook names (`onClashWin` / `onClashLose`), so
+  card text and code speak the same language.
+
+**This closes the last open card-facing vocabulary word.** No `⛔` items remain from doc 03.
 
 ## Everything else in doc 03 is unchanged
 

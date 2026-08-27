@@ -32,10 +32,10 @@ on four pillars: **the Tome** (persistent face-up spellbooks, top-of-tome auras)
 
 - ✅ **Spell damage modifier LOCKED = `Potency`.** Damage on connect = **Power + Potency**.
   (Delta doc: **`02-naming-deltas.md`**, superseding 2026-08-24 doc 03 §6 item 2.)
-- 🟡 **Clash-outcome pair: pole chosen = `plain-and-clear`; words still open.** `Deal:`/`Take:`,
-  `Beat:`/`Yield:`, `Best:`/`Fold:` all **rejected** by the user. Plain action-verb lane is
-  thin — next try **state/condition words**, and remember the winner tab must also read for
-  *good-on-lose* effects. (Full note in **`02-naming-deltas.md`**.)
+- ✅ **Clash-outcome pair LOCKED = `Clash Win:` / `Clash Lose:`.** After the whole search came
+  up empty, we went literal. This **closes the last open card-vocab word** — no `⛔` items left.
+  Bonus: matches the engine's `onClashWin` / `onClashLose` hooks. (Full note in
+  **`02-naming-deltas.md`**.)
 - 📄 **Unity vs. the web client — full cost/benefit** → **`01-engine-and-unity.md`** (NEW).
   Driver: premium juice. Key finding: doc 04 **undersold the repo** — a **working
   server-authoritative TS engine** (async-generator `state | vfx | log` stream over
@@ -58,10 +58,9 @@ on four pillars: **the Tome** (persistent face-up spellbooks, top-of-tome auras)
    Power+Potency, proficiency scaling). Its *shape* can start now; card content fills in with
    the starter set. Also **freeze the client↔server event protocol** as an explicit versioned
    contract — that's what keeps Path A cheap.
-3. **Finish the last card-vocab word:** the clash-outcome pair (see `02-naming-deltas.md`).
-4. **Classes** — "let classes emerge from named material" (bible doc 12); material now exists.
+3. **Classes** — "let classes emerge from named material" (bible doc 12); material now exists.
    How many, names/identities, synergy weight (lean light-to-medium), neutral glue cards y/n.
-5. **Lower priority:** scaling-pattern internal names (never printed), wider-world naming
+4. **Lower priority:** scaling-pattern internal names (never printed), wider-world naming
    (bible doc 06: species/`-kin`/in-world book name).
 
 ## What to nail next (priority order)
