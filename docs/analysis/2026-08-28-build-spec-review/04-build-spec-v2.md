@@ -1,20 +1,17 @@
-# Tome TCG — Build Spec v2 (decision-closed hand-off)
+# Tome TCG — Build Spec
 
-> **What this is.** The **hand-it-cold** build brief for the first playable version of Tome TCG in
-> the new **Unity + C# repo**. It supersedes the 2026-08-27
-> [`04-build-spec.md`](../2026-08-27-engine-and-client/04-build-spec.md) for the *build*: every
-> rule that spec left OPEN has been closed with the owner (2026-08-28). A fresh engineer — human
-> or agent — should build from **this file** and reach a playable M1 **without inventing a rule or
-> asking the owner a design question**.
+> **What this is.** The complete, self-contained brief to build the first real, playable version of
+> Tome TCG in a **fresh Unity + C# repo**. It inlines every rule, the architecture, the coding
+> standards, a provisional test-card set, and a milestone plan. **Build from this file alone** and
+> reach a playable Milestone 1 without inventing a rule. Anything marked **LOCKED** is settled —
+> implement it faithfully. Anything marked **PROVISIONAL** (all specific numbers, the sample cards)
+> is placeholder-for-tuning — implement it as a **config constant**, never a magic literal, so the
+> owner can tune it. Anything marked **OPEN** is undecided — leave a clean seam and **ask** rather
+> than finalise it.
 >
-> **How to use it.** Drop into the new repo as `docs/BUILD-SPEC.md`, then: *"Implement Tome TCG per
-> `docs/BUILD-SPEC.md`. Start at **Milestone 1**, stop at its Definition of Done for review. Every
-> number tagged PROVISIONAL is owner-tunable — implement it as a config constant, don't hardcode
-> it into logic. Do not invent design; if something is genuinely unspecified, ask."*
->
-> **Provenance.** Rules trace to the four-pillar bible (`docs/analysis/2026-08-22-design-evolution`),
-> the proficiency/vocabulary pass (`2026-08-24`), and this session's decisions ledger
-> (`2026-08-28/02-decisions.md`). Where any older doc disagrees with this file, **this file wins.**
+> **How to kick off.** Add this file to the repo as `docs/BUILD-SPEC.md`, then: *"Implement Tome TCG
+> per `docs/BUILD-SPEC.md`. Start at **Milestone 1**, stop at its Definition of Done for review. Do
+> not invent design where the spec marks something PROVISIONAL or OPEN — ask."*
 
 ---
 
@@ -71,24 +68,21 @@ singleton. Deck-out is not a loss. First to 0 Health is **knocked out**.
 | **`Prepare:`** | when the spell enters a tome (at reveal) | e.g. `Prepare: draw 1, return 1.` |
 | **`Clash Win:`** | after damage, if this spell **won** the clash | winner's fire first |
 | **`Clash Lose:`** | after damage, if this spell **lost** the clash | loser's fire after winner's |
-| **`Tie:`** *(NEW)* | after chip, on a same-colour **tie** | **few** cards carry it; most blank |
+| **`Tie:`** | after chip, on a same-colour **tie** | **few** cards carry it; most blank |
 | **`Aura:`** | continuously, **only while active (top)** of its tome | re-topping toggles which auras are live |
 
-### Denial ladder (LOCKED — this session's split)
+### Denial ladder (LOCKED)
 
 | Keyword | Effect | Frequency |
 |---|---|---|
 | **`Seal:`** | lock a specific **spell** from being cast, for a **card-specified** duration (1/2/X turns). Does not block Prepare. | common |
-| **`Lock:`** *(NEW)* | lock a **colour** from being cast at all next turn (removes an RPS option). | **rare, gated** — breaks RPS elegance |
-| **`Dampen:`** *(NEW)* | cap/reduce a target spell's **Potency to +0** for a duration. | common |
+| **`Lock:`** | lock a **colour** from being cast at all next turn (removes an RPS option). | **rare, gated** — breaks RPS elegance |
+| **`Dampen:`** | cap/reduce a target spell's **Potency to +0** for a duration. | common |
 | **`Bounce:`** | return a prepared spell to its owner's **hand** (resets any grown state & multi-colour choice). | common |
 | **`Bury:`** | return a prepared spell to its owner's **deck** (shuffled, seeded). | rarer/stronger |
 | **`Destroy`** | permanently remove a prepared spell. | **rare, gated** (quest capstone / self-cost) |
 
-**Old-doc → v2 mapping** (translate on sight): `Learn:`→`Prepare:`, `Hit:`→`Clash Win:`,
-`Lose:`→`Clash Lose:`, `Continuous`→`Aura:`, `base attack`→`Power`, `spell modifier`→`Potency`,
-old `Forget`→`Destroy this spell`/`Bounce this spell`, old colour-`Seal`→`Lock:`, old
-spell-`Seal`→`Seal:`, potency-cap→`Dampen:`, old `Burn`→`Destroy` ("Burn" is fire flavour only).
+Note: "Burn" is reserved for fire *flavour* only — permanent removal is always `Destroy`.
 
 ---
 
@@ -156,8 +150,8 @@ one.
 
 **Class.** A **printed list of class tags (0..n)** on each spell; **some effects read it.** Starter
 content is **0-or-1 class per card** (multi-class is expansion; ship one throwaway 2-class card to
-prove the list). Most starter cards are **classless**. See
-[`03-classes.md`](./03-classes.md) for the seven schools (ideation only).
+prove the list). Most starter cards are **classless**. The seven starting schools and their
+intended identities are in **Appendix A** (ideation only — not required to build M1).
 
 **Singleton (LOCKED).** One copy per card. **No spell strictly better than another in its colour** —
 every spell earns its slot with a situational angle. #1 card-design rule.
@@ -225,7 +219,7 @@ notified"). Real-time later on the same engine. **OPEN:** backend hosting/netcod
 /unity        Unity project on /rules (M3). Vertical-first mobile client; runs /rules locally for
               prediction; server is truth for PvP.
 /content      Data-driven card & quest definitions (M4) — sets are content, not code.
-/docs         This spec + carried-over design docs.
+/docs         This spec, plus any design notes you add as you build.
 ```
 
 ### Engine design rules (LOCKED)
@@ -288,7 +282,7 @@ test-first.
 
 ### 7a. The 13-card deck (a legal singleton deck; ~5🔴/4🟢/4🔵 incl. one multi-colour)
 
-| # | Name | 🎨 | Class | Potency | Effect (v2 vocab) | Exercises |
+| # | Name | 🎨 | Class | Potency | Effect | Exercises |
 |---|---|---|---|---|---|---|
 | 1 | Fireball | 🔴 | — | +10 | — | baseline damage, classless |
 | 2 | Ember Bite | 🔴 | Pyromancer | +3 | `Clash Win: deal 3.` | class-tagged, burn |
@@ -387,5 +381,26 @@ added/edited as data without touching engine code.
 - **Everything the client shows is a replay of engine events** + the client's own timing.
 - **Determinism is sacred** — seed RNG, store the seed, make matches reproducible.
 - **PROVISIONAL numbers are config constants**, never magic literals in logic.
-- When older docs and this spec disagree, **this spec wins**. When something's genuinely
-  unspecified, **ask** rather than invent.
+- When something is genuinely unspecified, **ask** rather than invent.
+
+---
+
+## Appendix A — the seven starting classes (ideation only)
+
+**Not an archetype build and not required for M1.** Captured so the `class` field has real material
+to test against and future card design has a north star. Every class spans all three colours
+(reflavoured). **Design law: most starter cards are classless** — a basic spell any wizard knows
+(e.g. a plain Fireball) has no class; a card earns a class only when it expresses a school's
+*specialisation*.
+
+| Class | Identity | Core mechanics | Sample specialisation card (spitball) |
+|---|---|---|---|
+| **Pyromancer** | Aggro / burn | fast, extra chip on top of the hit | *"Clash Win: deal 3."* |
+| **Cryomancer** | Freeze = **denial** | the `Seal:` / `Lock:` / `Dampen:` school (there is no "slow" mechanic — freeze *means* denial) | *"Clash Win: Dampen the opponent's active spell 2 turns."* |
+| **Geomancer** | Defense / walls | Shield generation + Bury; resilience | *"Aura: your Clash Lose spells gain +5 Shield."* |
+| **Airomancer** | Tempo / bounce | Bounce (opponent **and self**) + net-neutral draw; re-topping tricks | *"Clash Win: Bounce the opponent's active spell, then draw 1, return 1."* |
+| **Hydromancer** | Flow / heal / adapt | Heal + net-neutral draw; natural home for multi-colour | *"Prepare: draw 1, return 1. Clash Lose: Heal 8."* |
+| **Somomancer** | Physical / body | Auras that reward **Power-only attacks** (no spell). **Never grants Power.** | *"Aura: your Power-only attacks deal +6."* |
+| **Astromancer** | Cosmic / scaling / foresight | reads the board (opponent tome, momentum, HP, streaks); late payoff | *"+3 Potency per spell in the opponent's most-stocked tome."* |
+
+Nothing here is balanced or final — it is the inspiration board for the eventual starter set.
