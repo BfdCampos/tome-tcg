@@ -55,6 +55,14 @@ The user's "100%, not budging" constraints. **Do not re-litigate; design and bui
   default. **This supersedes both `01-engine-and-unity.md` (TS-brain hybrid) and doc 04
   (web-wrap).** *Documentation only — nothing built; the user said "don't action anything" on
   the build.*
+- 🚀 **BUILD SPEC for the new repo → `04-build-spec.md`** (NEW). A **self-contained** engineer/
+  agent hand-off: all LOCKED rules (turn order, tome, quests, counterplay, colour×class,
+  proficiency), the locked vocabulary + old→new mapping, the C#/Unity architecture (pure
+  deterministic `/rules` lib, `/harness` console, `/server`, `/unity`, `/content`), a
+  **PROVISIONAL** 13-spell + 5-quest test set that exercises every engine feature, and a 5-stage
+  milestone plan (M1 = playable headless engine in the terminal = the "test stuff" target).
+  Drop it into the new repo as `docs/BUILD-SPEC.md` and kick the agent off at Milestone 1.
+  Numbers/cards are placeholder-for-tuning; class list + final numbers left OPEN for the owner.
 - 📄 **Prior exploration kept as the record** → **`01-engine-and-unity.md`**: the Unity
   cost/benefit + the finding that doc 04 undersold the repo (a working async-generator TS
   engine + Pixi juice pipeline exist, but encode the *old* design). Its recommendation (TS
