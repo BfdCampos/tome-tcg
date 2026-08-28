@@ -111,6 +111,33 @@
     grant or raise Power.** Somomancer rewards Power-only attacks with damage/shield/etc., never
     with Power.
 
+## Content laws (owner card pass — LOCKED design rules)
+38. **Basic baseline = `+5` Potency, no effect** (was +10). *Fireball* is the yardstick every spell
+    is priced against.
+39. **Effects are paid for in Potency:** an effect-carrying card sits **below +5** (often +0–+3);
+    stronger effect → lower Potency. Never baseline-or-above *and* effect-laden. This is the
+    mechanism behind "no spell strictly better than another in its colour".
+40. **Winning is always the aim — never design a card to win by losing.** `Clash Lose:` gives at
+    most a **small safety** (~2 Shield / small Heal) and the card keeps **real offense**. **Large**
+    defensive payoffs (7–8 Shield) go on **`Clash Win:`** bought with low/+0 Potency.
+41. **One effect per card, for now** (multi-clause cards are a later set). Two patterns count as one
+    concept: net-neutral filter (`draw 1, bury 1`) and self-cost Destroy.
+42. **Avoid `Prepare:` effects** — you can't act until next turn; prefer Clash Win/Lose/Tie. At most
+    one rare `Prepare:` card exists (engine-path coverage).
+43. **No printed rules on cards — hard anti-Yu-Gi-Oh line.** Card face states only its terse effect;
+    it never restates engine rules (no "resets if it leaves the tome", no "counts both tomes"…).
+    Visuals + engine carry the rules; the spec holds the precise behaviour.
+44. **Scaling reads are terse & unqualified** ("+1 per red spell in play" = every red spell on the
+    board, both tomes).
+45. **Execute/comeback thresholds are absolute low-HP numbers** ("at 10 HP or less"), not "below
+    half".
+46. **Flagged for owner:** since only the winner connects, flat `+X` Potency ≈ `Clash Win: deal X`
+    (both pay only on a win). A Pyromancer "burn" needs a real differentiator — **pay on Tie** or
+    **pierce Shield**. Sample *Ember Bite* uses the Tie hook; confirm the direction.
+
+*(The provisional card + 7-quest set is rebuilt around these laws in
+[`04-build-spec-v2.md`](./04-build-spec-v2.md) §7.)*
+
 ## Format (unchanged, restated)
 - **Deck = exactly 13 spells + 7 quests, all singleton** (7 unique quests). **No colour-
   distribution requirement** — mono-colour is legal but RPS-suicidal.

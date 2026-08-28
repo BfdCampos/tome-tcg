@@ -139,7 +139,8 @@ from each tome's active spell.
 
 **The number model.** Power starts **10**, permanent, raised only by quests. Spells are **Potency**
 modifiers. Cast with no spell / empty / sealed → **Power only**. Because Power ramps, the whole
-book scales with your level.
+book scales with your level. **Baseline (PROVISIONAL): a plain, effect-less "basic" spell is
+`+5` Potency** — the yardstick every other spell is priced against (see §7d).
 
 **Multi-colour spells (starter feature).** A spell may carry 2–3 colours **and a distinct
 Potency/effect profile per colour**. It is multi-colour only in hand/deck; **on Prepare the owner
@@ -276,67 +277,104 @@ fizzle-on-gone, permanence precedence).
 
 ## 7. PROVISIONAL test content (for tuning — NOT final; owner has authority)
 
-**All numbers spitball.** Two parts: a **legal 13-card deck** for playing matches, and a small set
-of **extra coverage cards** to unit-test the rarer primitives. Build the feature each card needs,
-test-first.
+**All numbers spitball.** Read the content laws (§7a) first — they drive every card — then a
+**legal 13-card deck** (§7b), **extra coverage cards** (§7c), and the **7-quest deck** (§7d). Build
+the feature each card needs, test-first.
 
-### 7a. The 13-card deck (a legal singleton deck; ~5🔴/4🟢/4🔵 incl. one multi-colour)
+### 7a. Content laws (LOCKED design rules — enforce while writing every card)
 
-| # | Name | 🎨 | Class | Potency | Effect | Exercises |
+1. **Basic baseline = `+5` Potency, no effect** (PROVISIONAL). *Fireball* is the yardstick: a plain,
+   effect-less spell every deck happily runs. Every other spell is priced against it.
+2. **Effects are paid for in Potency.** A card that carries an effect sits **below +5** flat (often
+   `+0`–`+3`); the stronger the effect, the lower the Potency. **Never** both hit at/above baseline
+   *and* carry upside. Combined with #3 this is how "no spell strictly better than another in its
+   colour" is actually achieved.
+3. **Winning is always the aim — never design a card to win by losing.** `Clash Lose:` gives at most
+   a **small safety** (~2 Shield, or a small Heal) and the card still carries **real offense**. Any
+   **large** defensive payoff (7–8 Shield) goes on **`Clash Win:`**, bought with a low (often `+0`)
+   Potency — you must win the read to bank it.
+4. **One effect per card, for now.** No multi-clause "then …, then …" cards in the starter set (they
+   come in later sets). Two patterns count as a *single* concept and are allowed: a **net-neutral
+   filter** (`draw 1, bury 1`) and a **self-cost Destroy** (destroy theirs, then destroy this).
+5. **Avoid `Prepare:` effects.** You can't act on them until next turn anyway, so they read flat.
+   Prefer `Clash Win:` / `Clash Lose:` / `Tie:`. At most one rare `Prepare:` card exists, to prove
+   the engine path.
+6. **No printed rules on cards — hard anti-Yu-Gi-Oh line.** A card states only its own **terse**
+   effect. It never restates engine rules: no "resets if it leaves the tome", no "counts both
+   tomes", no reminder clauses. **Visuals + the engine carry the rules**; this spec holds the precise
+   behaviour, the card face stays minimal.
+7. **Scaling reads are terse and unqualified.** "+1 per red spell in play" means *every* red spell on
+   the board — **both players' tomes** — without spelling that out on the card.
+8. **Execute/comeback thresholds are absolute low-HP numbers** ("at 10 HP or less"), not "below half".
+9. **Draw guardrail:** no pure card advantage — repeatable draw is ~net-neutral; **never**
+   `Clash Win: draw 2` on a spell. (One-time quest draws are lower-risk but still tuned with care.)
+10. **Power is sacred:** no card grants or raises **Power** — Somomancer included. Somo pays out as
+    *damage/shield*, never as Power.
+11. **`Lock` and `Destroy` are rare & gated.**
+
+> **Design note flagged to the owner:** because only the clash *winner* connects, a flat `+3` Potency
+> and a `Clash Win: deal 3` are almost mechanically identical (both only pay on a win). So a
+> Pyromancer "burn" needs a *real* differentiator to not just be raw stats — the cleanest is **paying
+> out on a Tie** (when flat Potency does nothing) or **piercing Shield**. The sample *Ember Bite*
+> below uses the Tie hook. Worth confirming the direction.
+
+### 7b. The 13-card deck (a legal singleton deck; ~5🔴/4🟢/4🔵 incl. one multi-colour)
+
+Card text is the **terse face**; the *Notes* column is the precise engine behaviour (never printed).
+
+| # | Name | 🎨 | Class | Potency | Card face | Notes / exercises |
 |---|---|---|---|---|---|---|
-| 1 | Fireball | 🔴 | — | +10 | — | baseline damage, classless |
-| 2 | Ember Bite | 🔴 | Pyromancer | +3 | `Clash Win: deal 3.` | class-tagged, burn |
-| 3 | Flame Ward | 🔴 | — | +0 | `Clash Lose: gain 8 Shield.` | on-lose Shield, Shield cap |
-| 4 | Rising Flame | 🔴 | — | +2 | *Gains +2 Potency each clash it wins (resets if it leaves the tome).* | per-instance growth, reset-on-leave |
-| 5 | Frostbind | 🔵 | Cryomancer | +4 | `Clash Win: Dampen the opponent's active spell 2 turns.` | Dampen + class |
-| 6 | Frostfire Bolt | 🔴/🔵 | — | 🔴 +8 / 🔵 +5 | 🔴 `Clash Win: deal 2.` · 🔵 `Clash Lose: gain 6 Shield.` | **multi-colour, per-colour profile** |
-| 7 | Kindling | 🟢 | — | +2 | `Aura: your red spells deal +3 Potency.` | aura / top-of-tome |
-| 8 | Stoneskin | 🟢 | Geomancer | +1 | `Aura: your Clash Lose spells gain +5 Shield.` | class aura + Shield |
-| 9 | Last Stand | 🟢 | — | +6 | *+15 instead while below half Health.* | HP-scaling / comeback |
-| 10 | Gale | 🔵 | Airomancer | +5 | `Clash Win: Bounce the opponent's active spell, then draw 1 and return 1.` | Bounce + net-neutral draw + class |
-| 11 | Tidecaller | 🔵 | Hydromancer | +3 | `Prepare: draw 1, then return a card to your deck.` `Clash Lose: Heal 8.` | Heal + net-neutral draw + class |
-| 12 | Iron Stance | 🟢 | Somomancer | +0 | `Aura: your Power-only attacks deal +6.` (never grants Power) | Somo aura, Power-only reward |
-| 13 | Star Chart | 🔵 | Astromancer | +3 per spell in the opponent's most-stocked tome | — | reads opponent's public tomes, scaling |
+| 1 | Fireball | 🔴 | — | +5 | — | the baseline; classless |
+| 2 | Ember Bite | 🔴 | Pyromancer | +0 | `Clash Win / Tie: deal 3` | burn that pays on a **tie** too (below-baseline raw, situational); class-tagged |
+| 3 | Flame Ward | 🔴 | — | +0 | `Clash Win: gain 7 Shield` | big Shield bought by winning + low Potency (law #3); Shield cap |
+| 4 | Rising Flame | 🔴 | — | +0 | `Gains +2 Potency each clash it wins` | per-instance growth; engine silently resets it on leaving the tome (not printed) |
+| 5 | Frostbind | 🔵 | Cryomancer | +2 | `Clash Win: Dampen the opponent's active spell 1 turn` | Dampen + class (toned down) |
+| 6 | Frostfire Bolt | 🔴/🔵 | — | 🔴 +3 / 🔵 +4 | 🔴 `Clash Win: deal 2` · 🔵 — | **multi-colour, distinct per-colour profile** |
+| 7 | Kindling | 🟢 | — | +2 | `Aura: your red spells deal +2` | aura / top-of-tome |
+| 8 | Stoneskin | 🟢 | Geomancer | +3 | `Clash Lose: gain 2 Shield` | small on-lose safety, real offense (law #3); class |
+| 9 | Last Stand | 🟢 | — | +3 | `+20 while at 10 HP or less` | absolute-low-HP execute/comeback (law #8) |
+| 10 | Gale | 🔵 | Airomancer | +3 | `Clash Win: Bounce the opponent's active spell` | single-effect tempo/aura disruption; class |
+| 11 | Tidecaller | 🔵 | Hydromancer | +3 | `Clash Win: draw 1, bury 1` | net-neutral flow (law #4); class |
+| 12 | Iron Stance | 🟢 | Somomancer | +0 | `Power attacks +3` | Aura: your **Power-only** attacks deal +3 — **does not raise Power** (law #10); terse face, visuals carry it |
+| 13 | Star Chart | 🔵 | Astromancer | +0 | `+1 Potency per red spell in play` | scaling read across **both** tomes (law #7); terse |
 
-### 7b. Extra coverage cards (unit-test the rare/remaining primitives; not in the everyday deck)
+### 7c. Extra coverage cards (unit-test the rare/remaining primitives; not in the everyday deck)
 
-| Name | 🎨 | Class | Potency | Effect | Exercises |
+| Name | 🎨 | Class | Potency | Card face | Exercises |
 |---|---|---|---|---|---|
-| Silence Rune | 🔵 | Cryomancer | +2 | `Clash Win: Seal the opponent's highest-Potency spell 1 turn.` | **`Seal:`** (spell lock) + targeted tie-break |
-| Eclipse | 🔵 | Cryomancer | +0 | `Clash Win: Lock the opponent's red next turn.` *(rare/gated)* | **`Lock:`** (colour lock) |
-| Immolating Page | 🔴 | — | +0 | `Clash Win: Destroy the opponent's active blue spell, then Destroy this spell.` | **`Destroy`** + self-cost, gated |
-| Even Footing | 🟢 | — | +2 | `Tie: draw 1 and return 1.` | **`Tie:`** tab |
-| Frost-Ember Twin | 🔴/🟢 | Pyromancer + Cryomancer | 🔴 +6 / 🟢 +4 | 🔴 `Clash Win: deal 2.` · 🟢 `Clash Win: Dampen 1.` | **throwaway multi-class** (engine seam only) |
+| Silence Rune | 🔵 | Cryomancer | +2 | `Clash Win: Seal the opponent's strongest spell 1 turn` | **`Seal:`** (spell lock) + targeted tie-break |
+| Eclipse | 🔵 | Cryomancer | +0 | `Clash Win: Lock the opponent's red next turn` | **`Lock:`** (colour lock, rare/gated) |
+| Deep Bury | 🟢 | Geomancer | +2 | `Clash Win: Bury the opponent's active spell` | **`Bury:`** (to deck) |
+| Immolating Page | 🔴 | — | +0 | `Clash Win: Destroy the opponent's active blue spell, then destroy this` | **`Destroy`** + self-cost (the allowed two-clause, law #4) |
+| Soothing Rain | 🔵 | Hydromancer | +3 | `Clash Lose: Heal 3` | **Heal** small on-lose safety (law #3), no overheal |
+| Scout's Omen | 🟢 | — | +3 | `Prepare: draw 1, bury 1` | the one rare **`Prepare:`** card (law #5), net-neutral |
+| Frost-Ember Twin | 🔴/🟢 | Pyromancer + Cryomancer | 🔴 +3 / 🟢 +2 | 🔴 `Clash Win: deal 2` · 🟢 `Clash Win: Dampen 1 turn` | **throwaway multi-class** + multi-colour (engine seam only) |
 
 *Coverage matrix (every engine path M1 must prove):* baseline damage · Power+Potency · Shield
-(cap, on-lose) · Heal (no overheal) · growth (+reset) · Dampen · Seal · Lock · Bounce (+aura
-disruption) · Bury · Destroy (+self-cost) · Aura (top-of-tome, re-topping, class-conditional) ·
-multi-colour (per-colour profile, prepare-choice, reset) · class read · multi-class list ·
-Power-only aura (Somo) · opponent-tome scaling (Astro) · HP-scaling · Tie (chip + `Tie:` tab) ·
-net-neutral draw · quest cash-in (no cap) · simultaneity (snapshot, fizzle-on-gone, permanence
-precedence).
+(cap, on-win, small on-lose) · Heal (no overheal) · growth (+silent reset) · Dampen · Seal · Lock ·
+Bounce (+aura disruption) · Bury · Destroy (+self-cost) · Aura (top-of-tome, re-topping,
+class-conditional) · multi-colour (per-colour profile, prepare-choice, reset) · class read ·
+multi-class list · Power-only aura (Somo) · both-tomes scaling read (Astro) · HP-execute · Tie
+(chip + `Tie:` payout) · net-neutral draw · rare `Prepare:` · quest cash-in (no cap) · simultaneity
+(snapshot, fizzle-on-gone, permanence precedence).
 
-### 7c. Quests (5 of a 7-card deck — PROVISIONAL; +Power curve is spitball)
+### 7d. The 7-quest deck (PROVISIONAL; a full deck — 7 go into a loadout)
+
+Rewards are mostly **+Power**; **Objective 1 is always trivially completable**; the deck carries
+**loser-completable** objectives (comeback valve) and one **colour-locked** questline (a
+self-imposed, readable cost). No `draw 2` payouts (draw guardrail).
 
 | Quest | Objective 1 (trivial) | Objective 2 | Objective 3 (capstone) |
 |---|---|---|---|
 | **First Blood** | land any hit → **+2 Power** | win 3 clashes total → **+3 Power** | win a clash with 🔴 → **+5 Power** |
-| **Trial by Fire** *(comeback)* | lose any Health → **+2 Power** | lose 15+ Health total → **draw 2** | be below half Health → **+5 Power & 10 Shield** |
+| **Trial by Fire** *(comeback — fully loser-completable)* | lose any Health → **+2 Power** | lose 15+ Health total → **+3 Power** | be at 10 HP or less → **+5 Power & 5 Shield** |
 | **Deep Study** | Prepare a spell → **+2 Power** | have 3+ spells in one tome → **+3 Power** | have 5+ spells across tomes → **one-time: Destroy any one opponent active spell** |
 | **Tide Mastery** *(colour-locked, self-cost)* | cast a 🔵 spell → **+2 Power** | win a clash with 🔵 → **+3 Power** | win 2 clashes with 🔵 **or** lose 20 Health → **+5 Power** |
-| **Opening Gambit** | survive to turn 3 → **+2 Power** | all three tomes non-empty → **+3 Power** | Power ≥ 20 → **draw 2** |
+| **Opening Gambit** | survive to turn 3 → **+2 Power** | all three tomes non-empty → **+3 Power** | Power ≥ 20 → **+4 Power** |
+| **Even Exchange** *(rewards the tie/aggro line)* | tie a clash → **+2 Power** | win a clash → **+3 Power** | win 3 clashes total → **+5 Power** |
+| **The Long Study** *(rewards the grimoire)* | reach turn 2 → **+2 Power** | prepare into all three colours → **+3 Power** | have 8+ spells across tomes → **+5 Power** |
 
-*(Owner designs the remaining 2 quests + retunes everything in playtesting. Note the **draw
-guardrail** below — one-time quest draws are lower-risk than repeatable spell draw, but tune with
-care.)*
-
-### 7d. Content laws to enforce while writing cards
-- **Draw guardrail:** no pure card advantage. Repeatable spell draw must be ~net-neutral
-  (`draw 1 return 1`, `bury 1 draw 1`); a rare +1 net at most. **Never** `Clash Win: draw 2` on a
-  spell.
-- **Power is sacred:** no card grants/raises Power (Somomancer included).
-- **No strictly-better spells** within a colour.
-- **`Lock` and `Destroy` are rare & gated.** On-lose mitigation stays small + low-Potency.
+*(Owner retunes everything in playtesting. Every number here is spitball.)*
 
 ---
 
@@ -349,12 +387,12 @@ care.)*
 loop, §4 rules, the §6 hooks, and the §7 content. Deterministic, seeded. A simple AI (picks a
 colour + best legal spell; some Seal/Lock/Dampen awareness). Console harness plays a **full match**
 (human-vs-bot, bot-vs-bot), printing the board, both tomes (with tops), HP/Power/Shield, and each
-turn's events. *DoD:* play a complete match to a knockout in the terminal; **every card in §7a/§7b
-works**; unit tests cover the whole §7b coverage matrix — clash resolution, tie chip + `Tie:`,
-damage-before-effects ordering, the step-6/7 invariants, aura re-topping, growth (+reset), multi-
-colour prepare/profile/reset, Seal/Lock/Dampen/Bounce/Bury/Destroy(+self-cost), permanence
+turn's events. *DoD:* play a complete match to a knockout in the terminal; **every card in §7b/§7c
+works**; unit tests cover the whole §7c coverage matrix — clash resolution, tie chip + `Tie:`,
+damage-before-effects ordering, the step-6/7 invariants, aura re-topping, growth (+silent reset),
+multi-colour prepare/profile/reset, Seal/Lock/Dampen/Bounce/Bury/Destroy(+self-cost), permanence
 precedence + fizzle-on-gone, snapshot reads, quest cash-in (no cap, not-same-turn-as-draw),
-mulligan, and Power-only/opponent-tome/HP scaling.
+mulligan, and Power-only/both-tomes/HP scaling.
 
 **M2 — Authoritative server.** Thin C# service; async-turn; holds hidden commits; reveals on both-
 locked; persists match state. *DoD:* a full networked match between two terminal clients; server
@@ -400,7 +438,7 @@ to test against and future card design has a north star. Every class spans all t
 | **Geomancer** | Defense / walls | Shield generation + Bury; resilience | *"Aura: your Clash Lose spells gain +5 Shield."* |
 | **Airomancer** | Tempo / bounce | Bounce (opponent **and self**) + net-neutral draw; re-topping tricks | *"Clash Win: Bounce the opponent's active spell, then draw 1, return 1."* |
 | **Hydromancer** | Flow / heal / adapt | Heal + net-neutral draw; natural home for multi-colour | *"Prepare: draw 1, return 1. Clash Lose: Heal 8."* |
-| **Somomancer** | Physical / body | Auras that reward **Power-only attacks** (no spell). **Never grants Power.** | *"Aura: your Power-only attacks deal +6."* |
+| **Somomancer** | Physical / body | Auras that reward **Power-only attacks** (no spell). **Never grants Power** — pays as damage. | *"Power attacks +3."* (adds +3 damage to your Power-only attacks) |
 | **Astromancer** | Cosmic / scaling / foresight | reads the board (opponent tome, momentum, HP, streaks); late payoff | *"+3 Potency per spell in the opponent's most-stocked tome."* |
 
 Nothing here is balanced or final — it is the inspiration board for the eventual starter set.

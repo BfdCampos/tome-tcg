@@ -20,11 +20,11 @@ throwaway multiclass card exists in M1 purely to exercise the engine seam.
 |---|---|---|---|
 | **Pyromancer** | Aggro / burn | Fast, extra chip on top of the hit; damage-over-time feel | *"Clash Win: deal 3."* — aggressive, quick |
 | **Cryomancer** | Freeze = **denial** | The `Seal:` / `Lock:` / `Dampen:` school. **NB: "slow" is not a mechanic in this game** — freeze *means* denial | *"Clash Win: Dampen the opponent's active spell 2 turns."* |
-| **Geomancer** | Defense / walls | **Shield** generation + **Bury** (earth buries); resilience, deep foundations | *"Aura: your Clash Lose spells gain +5 Shield."* |
-| **Airomancer** | Tempo / bounce + draw | **Bounce** (opponent **and self**) + net-neutral draw; re-topping tricks | *"Clash Win: Bounce the opponent's active spell, then draw 1 (return 1)."* |
-| **Hydromancer** | Flow / heal / adapt | **Heal** + **net-neutral draw**; the natural home for **multi-colour** (water takes any shape) | *"Prepare: draw 1, return 1. Clash Lose: Heal 8."* |
-| **Somomancer** | Physical / body | **Auras that reward Power-only attacks** (attacking with **no spell**). **Never grants Power** | *"Aura: your Power-only attacks deal +6."* |
-| **Astromancer** | Cosmic / scaling / foresight | The **proficiency/board-reading** school — reads the opponent's tome, momentum, HP, streaks; late payoff | *"+3 Potency per spell in the opponent's most-stocked tome."* |
+| **Geomancer** | Defense / walls | **Shield** generation + **Bury** (earth buries); resilience, deep foundations | *"Clash Win: gain 7 Shield."* (big Shield bought by winning) |
+| **Airomancer** | Tempo / bounce | **Bounce** (opponent **and self**) + net-neutral draw; re-topping tricks | *"Clash Win: Bounce the opponent's active spell."* (one effect) |
+| **Hydromancer** | Flow / heal / adapt | **Heal** + **net-neutral draw**; the natural home for **multi-colour** (water takes any shape) | *"Clash Win: draw 1, bury 1."* |
+| **Somomancer** | Physical / body | **Auras that reward Power-only attacks** (attacking with **no spell**). **Never grants Power** — pays as damage | *"Power attacks +3."* (adds +3 damage to Power-only attacks) |
+| **Astromancer** | Cosmic / scaling / foresight | The **proficiency/board-reading** school — reads the board (spells in play, momentum, HP, streaks); late payoff | *"+1 Potency per red spell in play."* (terse; counts both tomes) |
 
 ## Signature notes from the owner
 

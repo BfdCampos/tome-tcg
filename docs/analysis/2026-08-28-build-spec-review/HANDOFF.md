@@ -46,6 +46,11 @@ deck-out ≠ loss.
   bounce); **multi-CLASS is expansion** (engine supports a list; one throwaway test card).
 - Global laws: **draw guardrail** (no pure card advantage), **Power only from quests** (Somo never
   grants Power), HP **caps at max**, Shield **capped ~20**, **no turn cap**.
+- **Content laws (owner card pass):** **basic baseline = +5 Potency** (effects are paid for in
+  Potency below that), **winning is always the aim** (big defensive payoffs go on Clash Win; on-lose
+  is a small safety only), **one effect per card for now**, **avoid Prepare: effects**, and **no
+  printed rules on cards** (terse face, visuals + engine carry the rules). The §7 card + full 7-quest
+  set is rebuilt around these.
 
 ## ⭐ NEXT SESSION likely starts here
 
