@@ -28,6 +28,14 @@ on four pillars: **the Tome** (persistent face-up spellbooks, top-of-tome auras)
 (Seal → Bounce → Shield/Heal-on-Lose → rare Burn; no graveyard). Damage on connect =
 **Power + Potency**. Format **13 spells + 7 quests = 20**; deck-out ≠ loss.
 
+## Product requirements — LOCKED, non-negotiable (2026-08-27)
+
+The user's "100%, not budging" constraints. **Do not re-litigate; design and build to these.**
+1. **The game is the user's vision** — design authority is the user's.
+2. **Mobile-first, vertical-first.** PC playable = bonus. **No console.**
+3. **Premium native-iPhone feel everywhere.** Bar = *Pokémon Pocket on iPhone*. Explicitly
+   **no** website-wrapped-in-app, **no** Android-feel-on-iPhone. (Drove the stack decision, doc 03.)
+
 ## Done this session (2026-08-27)
 
 - ✅ **Spell damage modifier LOCKED = `Potency`.** Damage on connect = **Power + Potency**.
@@ -36,44 +44,51 @@ on four pillars: **the Tome** (persistent face-up spellbooks, top-of-tome auras)
   up empty, we went literal. This **closes the last open card-vocab word** — no `⛔` items left.
   Bonus: matches the engine's `onClashWin` / `onClashLose` hooks. (Full note in
   **`02-naming-deltas.md`**.)
-- 📄 **Unity vs. the web client — full cost/benefit** → **`01-engine-and-unity.md`** (NEW).
-  Driver: premium juice. Key finding: doc 04 **undersold the repo** — a **working
-  server-authoritative TS engine** (async-generator `state | vfx | log` stream over
-  WebSockets) + a **Pixi 8 juice pipeline** already run, but they encode the *old* design, so
-  the rules get rewritten on **every** path. Recommendation: **build the new-design rules once
-  as a clean TS `packages/engine`**, keep a **disciplined serialised client↔server event
-  protocol**, keep pushing juice in **Pixi** — which makes **Path A (Unity client + TS brain)**
-  a cheap swap *later* if the juice bar proves it. **Don't** take Path B (all-in C#). Cheap
-  tiebreaker proposed: a one-card-sequence **Pixi-vs-Unity juice spike**. **Not locked —
-  awaiting the user.**
+- 🔒 **STACK DECISION MADE → `03-stack-decision.md`** (NEW). Against three non-negotiable user
+  requirements — (1) user's vision, (2) **mobile-first / vertical-first**, PC bonus, no console,
+  (3) **premium native-iPhone feel**, *explicitly no website-wrapped-in-app and no
+  Android-feel-on-iPhone*, bar = Pokémon Pocket on iPhone — the call is **Unity, end-to-end,
+  C#**. Rules = **one deterministic C# library** shared by a **lightweight C# authoritative
+  server** (holds hidden picks, reveals on both-locked) **and** the **Unity client** (same
+  library for local prediction / solo-AI). Lands as a **fresh Unity-native repo**; the current
+  TS engine becomes **reference, not foundation**. Async-turn multiplayer is the pragmatic
+  default. **This supersedes both `01-engine-and-unity.md` (TS-brain hybrid) and doc 04
+  (web-wrap).** *Documentation only — nothing built; the user said "don't action anything" on
+  the build.*
+- 📄 **Prior exploration kept as the record** → **`01-engine-and-unity.md`**: the Unity
+  cost/benefit + the finding that doc 04 undersold the repo (a working async-generator TS
+  engine + Pixi juice pipeline exist, but encode the *old* design). Its recommendation (TS
+  brain + Unity client) is now **superseded by doc 03**; read it for context, not the decision.
 
 ## ⭐ NEXT SESSION likely starts here
 
-1. **Engine/client decision (doc 01).** Open user questions: is the **two-language tax**
-   (Path A) acceptable later, or is single-language a hard rule? Is **console/Switch** ever a
-   goal (the one strong thumb on the scale for Unity)? Want the **juice spike**?
-2. **Highest-value technical step regardless of that call:** extract/rewrite the rules as a
-   clean, I/O-free, unit-tested TS **`packages/engine`** against the **new four-pillar design**
-   (Tomes, active-spell/Aura, Prepare·Cast·Clash, Seal/Bounce/Bury/Destroy, Quests-as-ramp,
-   Power+Potency, proficiency scaling). Its *shape* can start now; card content fills in with
-   the starter set. Also **freeze the client↔server event protocol** as an explicit versioned
-   contract — that's what keeps Path A cheap.
-3. **Classes** — "let classes emerge from named material" (bible doc 12); material now exists.
-   How many, names/identities, synergy weight (lean light-to-medium), neutral glue cards y/n.
-4. **Lower priority:** scaling-pattern internal names (never printed), wider-world naming
-   (bible doc 06: species/`-kin`/in-world book name).
+**Stack is decided (doc 03): Unity + C# end-to-end.** Build is **not** started — the user said
+"don't action anything" on code. When the user says go, the build track is:
+1. **Deterministic C# rules library** for the **new four-pillar design** (Tomes,
+   active-spell/Aura, Prepare·Cast·Clash, Seal/Bounce/Bury/Destroy, Quests-as-ramp,
+   Power+Potency, proficiency scaling), pure + unit-tested. Its *shape* can start ahead of final
+   card content; content follows the starter set.
+2. **Thin C# authoritative match service** referencing that library (hidden-commit reveal;
+   async-turn first). **Backend hosting/netcode choice** is an open build-time item (doc 03).
+3. **Unity project** — vertical-first mobile scenes + the juice layer, same rules library for
+   local prediction. Hold to the **feel guardrails** in doc 03.
+4. **Data-driven card/quest content pipeline** (content, not code).
+
+Design work that still gates the engine content (independent of the build decision):
+- **Classes** — "let classes emerge from named material" (bible doc 12); material now exists.
+  How many, names/identities, synergy weight (lean light-to-medium), neutral glue cards y/n.
+- **Lower priority:** scaling-pattern internal names (never printed), wider-world naming
+  (bible doc 06: species/`-kin`/in-world book name).
 
 ## What to nail next (priority order)
 
-1. **Engine track** — items 1–2 above (decision, then the `packages/engine` rewrite). This
-   is now the live thrust alongside naming.
-2. **Finish naming** — the clash pair, then classes.
-3. **The concrete starter set** — the real gate to all numbers. **NOT YET** (user wants a few
+1. **Classes** — the last big design block before a starter set is buildable.
+2. **The concrete starter set** — the real gate to all numbers. **NOT YET** (user wants a few
    more things settled first). When we do: ~13 singleton spells + ~7 quests; design law — no
    spell strictly-better than another in its colour.
-4. **Tune numbers** by playing: Power 10?, Potency band, ramp curve, starting HP (test 80?),
+3. **Tune numbers** by playing: Power 10?, Potency band, ramp curve, starting HP (test 80?),
    hand size, mulligan, Seal duration (lean 1).
-5. **Economy** later — loot/craft/packs and the **cosmetic** rarity tiers (WoW-style labels).
+4. **Economy** later — loot/craft/packs and the **cosmetic** rarity tiers (WoW-style labels).
 
 ## Don't re-litigate (see bible doc 08)
 
